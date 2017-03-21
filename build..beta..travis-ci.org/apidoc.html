@@ -1,0 +1,2227 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api-documentation for
+    <a
+
+        href="https://oss.sheetjs.com/js-xlsx/"
+
+    >xlsx (v0.9.4)</a>
+</h1>
+<h4>Excel (XLSB/XLSX/XLSM/XLS/XML) and ODS (ODS/FODS/UOS) spreadsheet parser and writer</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.xlsx">module xlsx</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.parse_fods">
+            function <span class="apidocSignatureSpan">xlsx.</span>parse_fods
+            <span class="apidocSignatureSpan">(data, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.parse_ods">
+            function <span class="apidocSignatureSpan">xlsx.</span>parse_ods
+            <span class="apidocSignatureSpan">(zip, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.parse_xlscfb">
+            function <span class="apidocSignatureSpan">xlsx.</span>parse_xlscfb
+            <span class="apidocSignatureSpan">(cfb, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.parse_zip">
+            function <span class="apidocSignatureSpan">xlsx.</span>parse_zip
+            <span class="apidocSignatureSpan">(zip, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.read">
+            function <span class="apidocSignatureSpan">xlsx.</span>read
+            <span class="apidocSignatureSpan">(data, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.readFile">
+            function <span class="apidocSignatureSpan">xlsx.</span>readFile
+            <span class="apidocSignatureSpan">(filename, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.readFileSync">
+            function <span class="apidocSignatureSpan">xlsx.</span>readFileSync
+            <span class="apidocSignatureSpan">(filename, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.write">
+            function <span class="apidocSignatureSpan">xlsx.</span>write
+            <span class="apidocSignatureSpan">(wb, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.writeFile">
+            function <span class="apidocSignatureSpan">xlsx.</span>writeFile
+            <span class="apidocSignatureSpan">(wb, filename, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.writeFileSync">
+            function <span class="apidocSignatureSpan">xlsx.</span>writeFileSync
+            <span class="apidocSignatureSpan">(wb, filename, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.write_ods">
+            function <span class="apidocSignatureSpan">xlsx.</span>write_ods
+            <span class="apidocSignatureSpan">(wb, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xlsx.</span>CFB</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xlsx.</span>CFB.utils</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xlsx.</span>SSF</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xlsx.</span>utils</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">xlsx.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.xlsx.CFB">module xlsx.CFB</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.CFB.parse">
+            function <span class="apidocSignatureSpan">xlsx.CFB.</span>parse
+            <span class="apidocSignatureSpan">(file)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.CFB.read">
+            function <span class="apidocSignatureSpan">xlsx.CFB.</span>read
+            <span class="apidocSignatureSpan">(blob, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xlsx.CFB.</span>utils</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">xlsx.CFB.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.xlsx.CFB.utils">module xlsx.CFB.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.CFB.utils.CheckField">
+            function <span class="apidocSignatureSpan">xlsx.CFB.utils.</span>CheckField
+            <span class="apidocSignatureSpan">(hexstr, fld)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.CFB.utils.ReadShift">
+            function <span class="apidocSignatureSpan">xlsx.CFB.utils.</span>ReadShift
+            <span class="apidocSignatureSpan">(size, t)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.CFB.utils.bconcat">
+            function <span class="apidocSignatureSpan">xlsx.CFB.utils.</span>bconcat
+            <span class="apidocSignatureSpan">(bufs)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.CFB.utils.prep_blob">
+            function <span class="apidocSignatureSpan">xlsx.CFB.utils.</span>prep_blob
+            <span class="apidocSignatureSpan">(blob, pos)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xlsx.CFB.utils.</span>consts</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.xlsx.SSF">module xlsx.SSF</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.SSF._eval">
+            function <span class="apidocSignatureSpan">xlsx.SSF.</span>_eval
+            <span class="apidocSignatureSpan">(fmt, v, opts, flen)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.SSF._general">
+            function <span class="apidocSignatureSpan">xlsx.SSF.</span>_general
+            <span class="apidocSignatureSpan">(v, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.SSF._general_int">
+            function <span class="apidocSignatureSpan">xlsx.SSF.</span>_general_int
+            <span class="apidocSignatureSpan">(v, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.SSF._general_num">
+            function <span class="apidocSignatureSpan">xlsx.SSF.</span>_general_num
+            <span class="apidocSignatureSpan">(v, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.SSF._split">
+            function <span class="apidocSignatureSpan">xlsx.SSF.</span>_split
+            <span class="apidocSignatureSpan">(fmt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.SSF.format">
+            function <span class="apidocSignatureSpan">xlsx.SSF.</span>format
+            <span class="apidocSignatureSpan">(fmt, v, o)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.SSF.get_table">
+            function <span class="apidocSignatureSpan">xlsx.SSF.</span>get_table
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.SSF.load">
+            function <span class="apidocSignatureSpan">xlsx.SSF.</span>load
+            <span class="apidocSignatureSpan">(fmt, idx)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.SSF.load_table">
+            function <span class="apidocSignatureSpan">xlsx.SSF.</span>load_table
+            <span class="apidocSignatureSpan">(tbl)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.SSF.parse_date_code">
+            function <span class="apidocSignatureSpan">xlsx.SSF.</span>parse_date_code
+            <span class="apidocSignatureSpan">(v, opts, b2)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xlsx.SSF.</span>_table</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xlsx.SSF.</span>opts</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">xlsx.SSF.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.xlsx.utils">module xlsx.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.decode_cell">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>decode_cell
+            <span class="apidocSignatureSpan">(cstr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.decode_col">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>decode_col
+            <span class="apidocSignatureSpan">(colstr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.decode_range">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>decode_range
+            <span class="apidocSignatureSpan">(range)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.decode_row">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>decode_row
+            <span class="apidocSignatureSpan">(rowstr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.encode_cell">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>encode_cell
+            <span class="apidocSignatureSpan">(cell)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.encode_col">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>encode_col
+            <span class="apidocSignatureSpan">(col)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.encode_range">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>encode_range
+            <span class="apidocSignatureSpan">(cs, ce)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.encode_row">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>encode_row
+            <span class="apidocSignatureSpan">(row)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.format_cell">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>format_cell
+            <span class="apidocSignatureSpan">(cell, v)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.get_formulae">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>get_formulae
+            <span class="apidocSignatureSpan">(sheet)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.make_csv">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>make_csv
+            <span class="apidocSignatureSpan">(sheet, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.make_formulae">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>make_formulae
+            <span class="apidocSignatureSpan">(sheet)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.make_json">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>make_json
+            <span class="apidocSignatureSpan">(sheet, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.sheet_to_csv">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>sheet_to_csv
+            <span class="apidocSignatureSpan">(sheet, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.sheet_to_formulae">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>sheet_to_formulae
+            <span class="apidocSignatureSpan">(sheet)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.sheet_to_json">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>sheet_to_json
+            <span class="apidocSignatureSpan">(sheet, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.sheet_to_row_object_array">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>sheet_to_row_object_array
+            <span class="apidocSignatureSpan">(sheet, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.split_cell">
+            function <span class="apidocSignatureSpan">xlsx.utils.</span>split_cell
+            <span class="apidocSignatureSpan">(cstr)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.xlsx" id="apidoc.module.xlsx">module xlsx</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.parse_fods" id="apidoc.element.xlsx.parse_fods">
+        function <span class="apidocSignatureSpan">xlsx.</span>parse_fods
+        <span class="apidocSignatureSpan">(data, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse_fods(data, opts) {
+	return parse_content_xml(data, opts);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.parse_ods" id="apidoc.element.xlsx.parse_ods">
+        function <span class="apidocSignatureSpan">xlsx.</span>parse_ods
+        <span class="apidocSignatureSpan">(zip, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse_ods(zip, opts) {
+	opts = opts || ({});
+	var ods = !!safegetzipfile(zip, &#x27;objectdata&#x27;);
+	if(ods) var manifest = parse_manifest(getzipdata(zip, &#x27;META-INF/manifest.xml&#x27;), opts);
+	var content = getzipstr(zip, &#x27;content.xml&#x27;);
+	if(!content) throw new Error(&#x22;Missing content.xml in &#x22; + (ods ? &#x22;ODS&#x22; : &#x22;UOF&#x22;)+ &#x22; file&#x22;);
+	return parse_content_xml(ods ? content : utf8read(content), opts);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.parse_xlscfb" id="apidoc.element.xlsx.parse_xlscfb">
+        function <span class="apidocSignatureSpan">xlsx.</span>parse_xlscfb
+        <span class="apidocSignatureSpan">(cfb, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse_xlscfb(cfb, options) {
+if(!options) options = {};
+fix_read_opts(options);
+reset_cp();
+var CompObj, Summary, Workbook;
+if(cfb.FullPaths) {
+	CompObj = cfb.find(&#x27;!CompObj&#x27;);
+	Summary = cfb.find(&#x27;!SummaryInformation&#x27;);
+	Workbook = cfb.find(&#x27;/Workbook&#x27;);
+} else {
+	prep_blob(cfb, 0);
+	Workbook = ({content: cfb});
+}
+
+if(!Workbook) Workbook = cfb.find(&#x27;/Book&#x27;);
+var CompObjP, SummaryP, WorkbookP;
+
+if(CompObj) CompObjP = parse_compobj(CompObj);
+if(options.bookProps &#x26;&#x26; !options.bookSheets) WorkbookP = ({});
+else {
+	if(Workbook) WorkbookP = parse_workbook(Workbook.content, options, !!Workbook.find);
+	else throw new Error(&#x22;Cannot find Workbook stream&#x22;);
+}
+
+if(cfb.FullPaths) parse_props(cfb);
+
+var props = {};
+for(var y in cfb.Summary) props[y] = cfb.Summary[y];
+for(y in cfb.DocSummary) props[y] = cfb.DocSummary[y];
+WorkbookP.Props = WorkbookP.Custprops = props;<span class="apidocCodeCommentSpan"> /* TODO: split up properties */
+</span>if(options.bookFiles) WorkbookP.cfb = cfb;
+/*WorkbookP.CompObjP = CompObjP; // TODO: storage? */
+return WorkbookP;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.parse_zip" id="apidoc.element.xlsx.parse_zip">
+        function <span class="apidocSignatureSpan">xlsx.</span>parse_zip
+        <span class="apidocSignatureSpan">(zip, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse_zip(zip, opts) {
+	make_ssf(SSF);
+	opts = opts || {};
+	fix_read_opts(opts);
+	reset_cp();
+
+	<span class="apidocCodeCommentSpan">/* OpenDocument Part 3 Section 2.2.1 OpenDocument Package */
+</span>	if(safegetzipfile(zip, &#x27;META-INF/manifest.xml&#x27;)) return parse_ods(zip, opts);
+	/* UOC */
+	if(safegetzipfile(zip, &#x27;objectdata.xml&#x27;)) return parse_ods(zip, opts);
+
+	var entries = keys(zip.files).filter(nodirs).sort();
+	var dir = parse_ct((getzipstr(zip, &#x27;[Content_Types].xml&#x27;)), opts);
+	var xlsb = false;
+	var sheets, binname;
+	if(dir.workbooks.length === 0) {
+		binname = &#x22;xl/workbook.xml&#x22;;
+		if(getzipdata(zip,binname, true)) dir.workbooks.push(binname);
+	}
+	if(dir.workbooks.length === 0) {
+		binname = &#x22;xl/workbook.bin&#x22;;
+		if(!getzipfile(zip,binname,true)) throw new Error(&#x22;Could not find workbook&#x22;);
+		dir.workbooks.push(binname);
+		xlsb = true;
+	}
+	if(dir.workbooks[0].slice(-3) == &#x22;bin&#x22;) xlsb = true;
+	if(xlsb) set_cp(1200);
+
+	var themes = ({});
+	var styles = ({});
+	if(!opts.bookSheets &#x26;&#x26; !opts.bookProps) {
+		strs = [];
+		if(dir.sst) strs=parse_sst(getzipdata(zip, dir.sst.replace(/^\//,&#x27;&#x27;)), dir.sst, opts);
+
+		if(opts.cellStyles &#x26;&#x26; dir.themes.length) themes = parse_theme(getzipstr(zip, dir.themes[0].replace(/^\//,&#x27;&#x27;), true)||&#x22;&#x22;,dir.themes
+[0], opts);
+
+		if(dir.style) styles = parse_sty(getzipdata(zip, dir.style.replace(/^\//,&#x27;&#x27;)),dir.style, themes, opts);
+	}
+
+	var wb = parse_wb(getzipdata(zip, dir.workbooks[0].replace(/^\//,&#x27;&#x27;)), dir.workbooks[0], opts);
+
+	var props = {}, propdata = &#x22;&#x22;;
+
+	if(dir.coreprops.length !== 0) {
+		propdata = getzipstr(zip, dir.coreprops[0].replace(/^\//,&#x27;&#x27;), true);
+		if(propdata) props = parse_core_props(propdata);
+		if(dir.extprops.length !== 0) {
+			propdata = getzipstr(zip, dir.extprops[0].replace(/^\//,&#x27;&#x27;), true);
+			if(propdata) parse_ext_props(propdata, props);
+		}
+	}
+
+	var custprops = {};
+	if(!opts.bookSheets || opts.bookProps) {
+		if (dir.custprops.length !== 0) {
+			propdata = getzipstr(zip, dir.custprops[0].replace(/^\//,&#x27;&#x27;), true);
+			if(propdata) custprops = parse_cust_props(propdata, opts);
+		}
+	}
+
+	var out = ({});
+	if(opts.bookSheets || opts.bookProps) {
+		if(props.Worksheets &#x26;&#x26; props.SheetNames.length &#x3e; 0) sheets=props.SheetNames;
+		else if(wb.Sheets) sheets = wb.Sheets.map(function pluck(x){ return x.name; });
+		if(opts.bookProps) { out.Props = props; out.Custprops = custprops; }
+		if(opts.bookSheets &#x26;&#x26; typeof sheets !== &#x27;undefined&#x27;) out.SheetNames = sheets;
+		if(opts.bookSheets ? out.SheetNames : opts.bookProps) return out;
+	}
+	sheets = {};
+
+	var deps = {};
+	if(opts.bookDeps &#x26;&#x26; dir.calcchain) deps=parse_cc(getzipdata(zip, dir.calcchain.replace(/^\//,&#x27;&#x27;)),dir.calcchain,opts);
+
+	var i=0;
+	var sheetRels = ({});
+	var path, relsPath;
+	if(!props.Worksheets) {
+		var wbsheets = wb.Sheets;
+		props.Worksheets = wbsheets.length;
+		props.SheetNames = [];
+		for(var j = 0; j != wbsheets.length; ++j) {
+			props.SheetNames[j] = wbsheets[j].name;
+		}
+	}
+
+	var wbext = xlsb ? &#x22;bin&#x22; : &#x22;xml&#x22;;
+	var wbrelsfile = &#x27;xl/_rels/workbook.&#x27; + wbext + &#x27;.rels&#x27;;
+	var wbrels = parse_rels(getzipstr(zip, wbrelsfile, true), wbrelsfile);
+	if(wbrels) wbrels = safe_parse_wbrels(wbrels, wb.Sheets);
+	/* Numbers iOS hack */
+	var nmode = (getzipdata(zip,&#x22;xl/worksheets/sheet.xml&#x22;,true))?1:0;
+	for(i = 0; i != props.Worksheets; ++i) {
+		if(wbrels &#x26;&#x26; wbrels[i]) path = &#x27;xl/&#x27; + (wbrels[i][1]).replace(/[\/]?xl\//, &#x22;&#x22;);
+		else {
+			path = &#x27;xl/worksheets/sheet&#x27;+(i+1-nmode)+&#x22;.&#x22; + wbext;
+			path = path.replace(/sheet0\./,&#x22;sheet.&#x22;);
+		}
+		relsPath = path.replace(/^(.*)(\/)([^\/]*)$/, &#x22;$1/_rels/$3.rels&#x22;);
+		safe_parse_ws(zip, path, relsPath, props.SheetNames[i], sheetRels, sheets, opts, wb, themes, styles);
+	}
+
+	if(dir.comments) parse_comments(zip, dir.comments, sheets, sheetRels, opts);
+
+	out = ({
+		Directory: dir,
+		Workbook: wb,
+		Props: props,
+		Custprops: custprops,
+		Deps: deps,
+		Sheets: sheets,
+		SheetNames: props.SheetNames,
+		Strings: strs,
+		Styles: styles,
+		Themes: themes,
+		SSF: SSF.get_table()
+	});
+	if(opts.bookFiles) {
+		out.keys = entries;
+		out.files = zip.files;
+	}
+	if(opts.bookVBA) {
+		if(dir.vba.length &#x3e; 0) out.vbaraw = getzipdata(zip,dir.vba[0].replace(/^ ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.read" id="apidoc.element.xlsx.read">
+        function <span class="apidocSignatureSpan">xlsx.</span>read
+        <span class="apidocSignatureSpan">(data, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readSync(data, opts) {
+	var zip, d = data, n=0;
+	var o = opts||{};
+	if(!o.type) o.type = (has_buf &#x26;&#x26; Buffer.isBuffer(data)) ? &#x22;buffer&#x22; : &#x22;base64&#x22;;
+	if(o.type == &#x22;file&#x22;) { o.type = &#x22;buffer&#x22;; d = _fs.readFileSync(data); }
+	switch((n = firstbyte(d, o))) {
+		case 0xD0: return parse_xlscfb(CFB.read(d, o), o);
+		case 0x09: return parse_xlscfb(s2a(o.type === &#x27;base64&#x27; ? Base64.decode(d) : d), o);
+		case 0x3C: return parse_xlml(d, o);
+		case 0x50: return read_zip(d, o);
+		case 0xEF: return parse_xlml(d, o);
+		default: throw new Error(&#x22;Unsupported file &#x22; + n);
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  /* convert data to binary string */
+  var data = new Uint8Array(arraybuffer);
+  var arr = new Array();
+  for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+  var bstr = arr.join(&#x22;&#x22;);
+
+  /* Call XLSX */
+  var workbook = XLSX.<span class="apidocCodeKeywordSpan">read</span>(bstr, {type:&#x22;binary&#x22;});
+
+  /* DO SOMETHING WITH workbook HERE */
+}
+
+oReq.send();
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.readFile" id="apidoc.element.xlsx.readFile">
+        function <span class="apidocSignatureSpan">xlsx.</span>readFile
+        <span class="apidocSignatureSpan">(filename, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readFileSync(filename, opts) {
+	var o = opts||{}; o.type = &#x27;file&#x27;;
+	return readSync(filename, o);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+For parsing, the first step is to read the file.  This involves acquiring the
+data and feeding it into the library.  Here are a few common scenarios:
+
+- node readFile:
+
+```js
+if(typeof require !== &#x27;undefined&#x27;) XLSX = require(&#x27;xlsx&#x27;);
+var workbook = XLSX.<span class="apidocCodeKeywordSpan">readFile</span>(&#x27;test.xlsx&#x27;);
+/* DO SOMETHING WITH workbook HERE */
+```
+
+- ajax (for a more complete example that works in older browsers, check the demo
+  at &#x3c;http://oss.sheetjs.com/js-xlsx/ajax.html&#x3e;):
+
+```js
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.readFileSync" id="apidoc.element.xlsx.readFileSync">
+        function <span class="apidocSignatureSpan">xlsx.</span>readFileSync
+        <span class="apidocSignatureSpan">(filename, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readFileSync(filename, opts) {
+	var o = opts||{}; o.type = &#x27;file&#x27;;
+	return readSync(filename, o);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.write" id="apidoc.element.xlsx.write">
+        function <span class="apidocSignatureSpan">xlsx.</span>write
+        <span class="apidocSignatureSpan">(wb, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function writeSync(wb, opts) {
+	check_wb(wb);
+	var o = opts||{};
+	switch(o.bookType || &#x27;xlsx&#x27;) {
+		case &#x27;xml&#x27;:
+		case &#x27;xlml&#x27;: return write_string_type(write_xlml(wb, o), o);
+		case &#x27;csv&#x27;: return write_string_type(write_csv_str(wb, o), o);
+		case &#x27;fods&#x27;: return write_string_type(write_ods(wb, o), o);
+		case &#x27;biff2&#x27;: return write_binary_type(write_biff_buf(wb, o), o);
+		case &#x27;xlsx&#x27;:
+		case &#x27;xlsm&#x27;:
+		case &#x27;xlsb&#x27;:
+		case &#x27;ods&#x27;: return write_zip_type(wb, o);
+		default: throw new Error (&#x22;Unrecognized bookType |&#x22; + o.bookType + &#x22;|&#x22;);
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+- browser generate binary blob and &#x22;download&#x22; to client
+  (using [FileSaver.js](https://github.com/eligrey/FileSaver.js/) for download):
+
+```js
+/* bookType can be &#x27;xlsx&#x27; or &#x27;xlsm&#x27; or &#x27;xlsb&#x27; or &#x27;ods&#x27; */
+var wopts = { bookType:&#x27;xlsx&#x27;, bookSST:false, type:&#x27;binary&#x27; };
+
+var wbout = XLSX.<span class="apidocCodeKeywordSpan">write</span>(workbook,wopts);
+
+function s2ab(s) {
+  var buf = new ArrayBuffer(s.length);
+  var view = new Uint8Array(buf);
+  for (var i=0; i!=s.length; ++i) view[i] = s.charCodeAt(i) &#x26; 0xFF;
+  return buf;
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.writeFile" id="apidoc.element.xlsx.writeFile">
+        function <span class="apidocSignatureSpan">xlsx.</span>writeFile
+        <span class="apidocSignatureSpan">(wb, filename, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function writeFileSync(wb, filename, opts) {
+	var o = opts||{}; o.type = &#x27;file&#x27;;
+	o.file = filename;
+	if(!o.bookType) switch(o.file.slice(-5).toLowerCase()) {
+		case &#x27;.xlsx&#x27;: o.bookType = &#x27;xlsx&#x27;; break;
+		case &#x27;.xlsm&#x27;: o.bookType = &#x27;xlsm&#x27;; break;
+		case &#x27;.xlsb&#x27;: o.bookType = &#x27;xlsb&#x27;; break;
+		case &#x27;.fods&#x27;: o.bookType = &#x27;fods&#x27;; break;
+		case &#x27;.xlml&#x27;: o.bookType = &#x27;xlml&#x27;; break;
+	default: switch(o.file.slice(-4).toLowerCase()) {
+		case &#x27;.xls&#x27;: o.bookType = &#x27;biff2&#x27;; break;
+		case &#x27;.xml&#x27;: o.bookType = &#x27;xml&#x27;; break;
+		case &#x27;.ods&#x27;: o.bookType = &#x27;ods&#x27;; break;
+		case &#x27;.csv&#x27;: o.bookType = &#x27;csv&#x27;; break;
+	}}
+	return writeSync(wb, o);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+dissemination.  The second step is to actual share the data with the end point.
+Assuming `workbook` is a workbook object:
+
+- nodejs write to file:
+
+```js
+/* output format determined by filename */
+XLSX.<span class="apidocCodeKeywordSpan">writeFile</span>(workbook, &#x27;out.xlsx&#x27;);
+/* at this point, out.xlsx is a file that you can distribute */
+```
+
+- browser generate binary blob and &#x22;download&#x22; to client
+  (using [FileSaver.js](https://github.com/eligrey/FileSaver.js/) for download):
+
+```js
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.writeFileSync" id="apidoc.element.xlsx.writeFileSync">
+        function <span class="apidocSignatureSpan">xlsx.</span>writeFileSync
+        <span class="apidocSignatureSpan">(wb, filename, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function writeFileSync(wb, filename, opts) {
+	var o = opts||{}; o.type = &#x27;file&#x27;;
+	o.file = filename;
+	if(!o.bookType) switch(o.file.slice(-5).toLowerCase()) {
+		case &#x27;.xlsx&#x27;: o.bookType = &#x27;xlsx&#x27;; break;
+		case &#x27;.xlsm&#x27;: o.bookType = &#x27;xlsm&#x27;; break;
+		case &#x27;.xlsb&#x27;: o.bookType = &#x27;xlsb&#x27;; break;
+		case &#x27;.fods&#x27;: o.bookType = &#x27;fods&#x27;; break;
+		case &#x27;.xlml&#x27;: o.bookType = &#x27;xlml&#x27;; break;
+	default: switch(o.file.slice(-4).toLowerCase()) {
+		case &#x27;.xls&#x27;: o.bookType = &#x27;biff2&#x27;; break;
+		case &#x27;.xml&#x27;: o.bookType = &#x27;xml&#x27;; break;
+		case &#x27;.ods&#x27;: o.bookType = &#x27;ods&#x27;; break;
+		case &#x27;.csv&#x27;: o.bookType = &#x27;csv&#x27;; break;
+	}}
+	return writeSync(wb, o);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.write_ods" id="apidoc.element.xlsx.write_ods">
+        function <span class="apidocSignatureSpan">xlsx.</span>write_ods
+        <span class="apidocSignatureSpan">(wb, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function write_ods(wb, opts) {
+	if(opts.bookType == &#x22;fods&#x22;) return write_content_xml(wb, opts);
+
+var zip = new jszip();
+	var f = &#x22;&#x22;;
+
+	var manifest = [];
+	var rdf = [];
+
+	<span class="apidocCodeCommentSpan">/* 3:3.3 and 2:2.2.4 */
+</span>	f = &#x22;mimetype&#x22;;
+	zip.file(f, &#x22;application/vnd.oasis.opendocument.spreadsheet&#x22;);
+
+	/* Part 1 Section 2.2 Documents */
+	f = &#x22;content.xml&#x22;;
+	zip.file(f, write_content_xml(wb, opts));
+	manifest.push([f, &#x22;text/xml&#x22;]);
+	rdf.push([f, &#x22;ContentFile&#x22;]);
+
+	/* Part 3 Section 6 Metadata Manifest File */
+	f = &#x22;manifest.rdf&#x22;;
+	zip.file(f, write_rdf(rdf, opts));
+	manifest.push([f, &#x22;application/rdf+xml&#x22;]);
+
+	/* Part 3 Section 4 Manifest File */
+	f = &#x22;META-INF/manifest.xml&#x22;;
+	zip.file(f, write_manifest(manifest, opts));
+
+	return zip;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.xlsx.CFB" id="apidoc.module.xlsx.CFB">module xlsx.CFB</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.CFB.parse" id="apidoc.element.xlsx.CFB.parse">
+        function <span class="apidocSignatureSpan">xlsx.CFB.</span>parse
+        <span class="apidocSignatureSpan">(file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse(file) {
+var mver = 3; // major version
+var ssz = 512; // sector size
+var nmfs = 0; // number of mini FAT sectors
+var ndfs = 0; // number of DIFAT sectors
+var dir_start = 0; // first directory sector location
+var minifat_start = 0; // first mini FAT sector location
+var difat_start = 0; // first mini FAT sector location
+
+var fat_addrs = []; // locations of FAT sectors
+
+<span class="apidocCodeCommentSpan">/* [MS-CFB] 2.2 Compound File Header */
+</span>var blob = file.slice(0,512);
+prep_blob(blob, 0);
+
+/* major version */
+var mv = check_get_mver(blob);
+mver = mv[0];
+switch(mver) {
+	case 3: ssz = 512; break; case 4: ssz = 4096; break;
+	default: throw &#x22;Major Version: Expected 3 or 4 saw &#x22; + mver;
+}
+
+/* reprocess header */
+if(ssz !== 512) { blob = file.slice(0,ssz); prep_blob(blob, 28 /* blob.l */); }
+/* Save header for final object */
+var header = file.slice(0,ssz);
+
+check_shifts(blob, mver);
+
+// Number of Directory Sectors
+var nds = blob.read_shift(4, &#x27;i&#x27;);
+if(mver === 3 &#x26;&#x26; nds !== 0) throw &#x27;# Directory Sectors: Expected 0 saw &#x27; + nds;
+
+// Number of FAT Sectors
+//var nfs = blob.read_shift(4, &#x27;i&#x27;);
+blob.l += 4;
+
+// First Directory Sector Location
+dir_start = blob.read_shift(4, &#x27;i&#x27;);
+
+// Transaction Signature
+blob.l += 4;
+
+// Mini Stream Cutoff Size
+blob.chk(&#x27;00100000&#x27;, &#x27;Mini Stream Cutoff Size: &#x27;);
+
+// First Mini FAT Sector Location
+minifat_start = blob.read_shift(4, &#x27;i&#x27;);
+
+// Number of Mini FAT Sectors
+nmfs = blob.read_shift(4, &#x27;i&#x27;);
+
+// First DIFAT sector location
+difat_start = blob.read_shift(4, &#x27;i&#x27;);
+
+// Number of DIFAT Sectors
+ndfs = blob.read_shift(4, &#x27;i&#x27;);
+
+// Grab FAT Sector Locations
+for(var q, j = 0; j &#x3c; 109; ++j) { /* 109 = (512 - blob.l)&#x3e;&#x3e;&#x3e;2; */
+	q = blob.read_shift(4, &#x27;i&#x27;);
+	if(q&#x3c;0) break;
+	fat_addrs[j] = q;
+}
+
+/** Break the file up into sectors */
+var sectors = sectorify(file, ssz);
+
+sleuth_fat(difat_start, ndfs, sectors, ssz, fat_addrs);
+
+/** Chains */
+var sector_list = make_sector_list(sectors, dir_start, fat_addrs, ssz);
+
+sector_list[dir_start].name = &#x22;!Directory&#x22;;
+if(nmfs &#x3e; 0 &#x26;&#x26; minifat_start !== ENDOFCHAIN) sector_list[minifat_start].name = &#x22;!MiniFAT&#x22;;
+sector_list[fat_addrs[0]].name = &#x22;!FAT&#x22;;
+sector_list.fat_addrs = fat_addrs;
+sector_list.ssz = ssz;
+
+/* [MS-CFB] 2.6.1 Compound File Directory Entry */
+var files = {}, Paths = [], FileIndex = [], FullPaths = [], FullPathDir = {};
+read_directory(dir_start, sector_list, sectors, Paths, nmfs, files, FileIndex);
+
+build_full_paths(FileIndex, FullPathDir, FullPaths, Paths);
+
+var root_name = Paths.shift();
+Paths.root = root_name;
+
+/* [MS-CFB] 2.6.4 (Unicode 3.0.1 case conversion) */
+var find_path = make_find_path(FullPaths, Paths, FileIndex, files, root_name);
+
+return {
+	raw: {header: header, sectors: sectors},
+	FileIndex: FileIndex,
+	FullPaths: FullPaths,
+	FullPathDir: FullPathDir,
+	find: find_path
+};
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.CFB.read" id="apidoc.element.xlsx.CFB.read">
+        function <span class="apidocSignatureSpan">xlsx.CFB.</span>read
+        <span class="apidocSignatureSpan">(blob, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readSync(blob, options) {
+	switch(options !== undefined &#x26;&#x26; options.type !== undefined ? options.type : &#x22;base64&#x22;) {
+		case &#x22;file&#x22;: return readFileSync(blob, options);
+		case &#x22;base64&#x22;: return parse(s2a(Base64.decode(blob)), options);
+		case &#x22;binary&#x22;: return parse(s2a(blob), options);
+	}
+	return parse(blob);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  /* convert data to binary string */
+  var data = new Uint8Array(arraybuffer);
+  var arr = new Array();
+  for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+  var bstr = arr.join(&#x22;&#x22;);
+
+  /* Call XLSX */
+  var workbook = XLSX.<span class="apidocCodeKeywordSpan">read</span>(bstr, {type:&#x22;binary&#x22;});
+
+  /* DO SOMETHING WITH workbook HERE */
+}
+
+oReq.send();
+```
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.xlsx.CFB.utils" id="apidoc.module.xlsx.CFB.utils">module xlsx.CFB.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.CFB.utils.CheckField" id="apidoc.element.xlsx.CFB.utils.CheckField">
+        function <span class="apidocSignatureSpan">xlsx.CFB.utils.</span>CheckField
+        <span class="apidocSignatureSpan">(hexstr, fld)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function CheckField(hexstr, fld) {
+	var m = __hexlify(this,this.l,hexstr.length&#x3e;&#x3e;1);
+	if(m !== hexstr) throw fld + &#x27;Expected &#x27; + hexstr + &#x27; saw &#x27; + m;
+	this.l += hexstr.length&#x3e;&#x3e;1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.CFB.utils.ReadShift" id="apidoc.element.xlsx.CFB.utils.ReadShift">
+        function <span class="apidocSignatureSpan">xlsx.CFB.utils.</span>ReadShift
+        <span class="apidocSignatureSpan">(size, t)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ReadShift(size, t) {
+	var o=&#x22;&#x22;, oI, oR, oo=[], w, vv, i, loc;
+	switch(t) {
+		case &#x27;dbcs&#x27;:
+			loc = this.l;
+			if(has_buf &#x26;&#x26; Buffer.isBuffer(this)) o = this.slice(this.l, this.l+2*size).toString(&#x22;utf16le&#x22;);
+			else for(i = 0; i != size; ++i) { o+=String.fromCharCode(__readUInt16LE(this, loc)); loc+=2; }
+			size *= 2;
+			break;
+
+		case &#x27;utf8&#x27;: o = __utf8(this, this.l, this.l + size); break;
+		case &#x27;utf16le&#x27;: size *= 2; o = __utf16le(this, this.l, this.l + size); break;
+
+		case &#x27;wstr&#x27;:
+			if(typeof cptable !== &#x27;undefined&#x27;) o = cptable.utils.decode(current_codepage, this.slice(this.l, this.l+2*size));
+			else return ReadShift.call(this, size, &#x27;dbcs&#x27;);
+			size = 2 * size; break;
+
+		<span class="apidocCodeCommentSpan">/* [MS-OLEDS] 2.1.4 LengthPrefixedAnsiString */
+</span>		case &#x27;lpstr&#x27;: o = __lpstr(this, this.l); size = 5 + o.length; break;
+		/* [MS-OLEDS] 2.1.5 LengthPrefixedUnicodeString */
+		case &#x27;lpwstr&#x27;: o = __lpwstr(this, this.l); size = 5 + o.length; if(o[o.length-1] == &#x27;\u0000&#x27;) size += 2; break;
+
+		case &#x27;cstr&#x27;: size = 0; o = &#x22;&#x22;;
+			while((w=__readUInt8(this, this.l + size++))!==0) oo.push(_getchar(w));
+			o = oo.join(&#x22;&#x22;); break;
+		case &#x27;wstr&#x27;: size = 0; o = &#x22;&#x22;;
+			while((w=__readUInt16LE(this,this.l +size))!==0){oo.push(_getchar(w));size+=2;}
+			size+=2; o = oo.join(&#x22;&#x22;); break;
+
+		/* sbcs and dbcs support continue records in the SST way TODO codepages */
+		case &#x27;dbcs-cont&#x27;: o = &#x22;&#x22;; loc = this.l;
+			for(i = 0; i != size; ++i) {
+				if(this.lens &#x26;&#x26; this.lens.indexOf(loc) !== -1) {
+					w = __readUInt8(this, loc);
+					this.l = loc + 1;
+					vv = ReadShift.call(this, size-i, w ? &#x27;dbcs-cont&#x27; : &#x27;sbcs-cont&#x27;);
+					return oo.join(&#x22;&#x22;) + vv;
+				}
+				oo.push(_getchar(__readUInt16LE(this, loc)));
+				loc+=2;
+			} o = oo.join(&#x22;&#x22;); size *= 2; break;
+
+		case &#x27;sbcs-cont&#x27;: o = &#x22;&#x22;; loc = this.l;
+			for(i = 0; i != size; ++i) {
+				if(this.lens &#x26;&#x26; this.lens.indexOf(loc) !== -1) {
+					w = __readUInt8(this, loc);
+					this.l = loc + 1;
+					vv = ReadShift.call(this, size-i, w ? &#x27;dbcs-cont&#x27; : &#x27;sbcs-cont&#x27;);
+					return oo.join(&#x22;&#x22;) + vv;
+				}
+				oo.push(_getchar(__readUInt8(this, loc)));
+				loc+=1;
+			} o = oo.join(&#x22;&#x22;); break;
+
+		default:
+	switch(size) {
+		case 1: oI = __readUInt8(this, this.l); this.l++; return oI;
+		case 2: oI = (t === &#x27;i&#x27; ? __readInt16LE : __readUInt16LE)(this, this.l); this.l += 2; return oI;
+		case 4:
+			if(t === &#x27;i&#x27; || (this[this.l+3] &#x26; 0x80)===0) { oI = __readInt32LE(this, this.l); this.l += 4; return oI; }
+			else { oR = __readUInt32LE(this, this.l); this.l += 4; } return oR;
+		case 8: if(t === &#x27;f&#x27;) { oR = __double(this, this.l); this.l += 8; return oR; }
+		/* falls through */
+		case 16: o = __hexlify(this, this.l, size); break;
+	}}
+	this.l+=size; return o;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.CFB.utils.bconcat" id="apidoc.element.xlsx.CFB.utils.bconcat">
+        function <span class="apidocSignatureSpan">xlsx.CFB.utils.</span>bconcat
+        <span class="apidocSignatureSpan">(bufs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">bconcat = function (bufs) { return [].concat.apply([], bufs); }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.CFB.utils.prep_blob" id="apidoc.element.xlsx.CFB.utils.prep_blob">
+        function <span class="apidocSignatureSpan">xlsx.CFB.utils.</span>prep_blob
+        <span class="apidocSignatureSpan">(blob, pos)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function prep_blob(blob, pos) {
+	blob.l = pos;
+	blob.read_shift = ReadShift;
+	blob.chk = CheckField;
+	blob.write_shift = WriteShift;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.xlsx.SSF" id="apidoc.module.xlsx.SSF">module xlsx.SSF</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.SSF._eval" id="apidoc.element.xlsx.SSF._eval">
+        function <span class="apidocSignatureSpan">xlsx.SSF.</span>_eval
+        <span class="apidocSignatureSpan">(fmt, v, opts, flen)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function eval_fmt(fmt, v, opts, flen) {
+	var out = [], o = &#x22;&#x22;, i = 0, c = &#x22;&#x22;, lst=&#x27;t&#x27;, q, dt, j, cc;
+	var hr=&#x27;H&#x27;;
+	<span class="apidocCodeCommentSpan">/* Tokenize */
+</span>	while(i &#x3c; fmt.length) {
+		switch((c = fmt.charAt(i))) {
+			case &#x27;G&#x27;: /* General */
+				if(!isgeneral(fmt, i)) throw new Error(&#x27;unrecognized character &#x27; + c + &#x27; in &#x27; +fmt);
+				out[out.length] = {t:&#x27;G&#x27;, v:&#x27;General&#x27;}; i+=7; break;
+			case &#x27;&#x22;&#x27;: /* Literal text */
+				for(o=&#x22;&#x22;;(cc=fmt.charCodeAt(++i)) !== 34 &#x26;&#x26; i &#x3c; fmt.length;) o += String.fromCharCode(cc);
+				out[out.length] = {t:&#x27;t&#x27;, v:o}; ++i; break;
+			case &#x27;\\&#x27;: var w = fmt[++i], t = (w === &#x22;(&#x22; || w === &#x22;)&#x22;) ? w : &#x27;t&#x27;;
+				out[out.length] = {t:t, v:w}; ++i; break;
+			case &#x27;_&#x27;: out[out.length] = {t:&#x27;t&#x27;, v:&#x22; &#x22;}; i+=2; break;
+			case &#x27;@&#x27;: /* Text Placeholder */
+				out[out.length] = {t:&#x27;T&#x27;, v:v}; ++i; break;
+			case &#x27;B&#x27;: case &#x27;b&#x27;:
+				if(fmt[i+1] === &#x22;1&#x22; || fmt[i+1] === &#x22;2&#x22;) {
+					if(dt==null) { dt=parse_date_code(v, opts, fmt[i+1] === &#x22;2&#x22;); if(dt==null) return &#x22;&#x22;; }
+					out[out.length] = {t:&#x27;X&#x27;, v:fmt.substr(i,2)}; lst = c; i+=2; break;
+				}
+				/* falls through */
+			case &#x27;M&#x27;: case &#x27;D&#x27;: case &#x27;Y&#x27;: case &#x27;H&#x27;: case &#x27;S&#x27;: case &#x27;E&#x27;:
+				c = c.toLowerCase();
+				/* falls through */
+			case &#x27;m&#x27;: case &#x27;d&#x27;: case &#x27;y&#x27;: case &#x27;h&#x27;: case &#x27;s&#x27;: case &#x27;e&#x27;: case &#x27;g&#x27;:
+				if(v &#x3c; 0) return &#x22;&#x22;;
+				if(dt==null) { dt=parse_date_code(v, opts); if(dt==null) return &#x22;&#x22;; }
+				o = c; while(++i&#x3c;fmt.length &#x26;&#x26; fmt[i].toLowerCase() === c) o+=c;
+				if(c === &#x27;m&#x27; &#x26;&#x26; lst.toLowerCase() === &#x27;h&#x27;) c = &#x27;M&#x27;; /* m = minute */
+				if(c === &#x27;h&#x27;) c = hr;
+				out[out.length] = {t:c, v:o}; lst = c; break;
+			case &#x27;A&#x27;:
+				q={t:c, v:&#x22;A&#x22;};
+				if(dt==null) dt=parse_date_code(v, opts);
+				if(fmt.substr(i, 3) === &#x22;A/P&#x22;) { if(dt!=null) q.v = dt.H &#x3e;= 12 ? &#x22;P&#x22; : &#x22;A&#x22;; q.t = &#x27;T&#x27;; hr=&#x27;h&#x27;;i+=3;}
+				else if(fmt.substr(i,5) === &#x22;AM/PM&#x22;) { if(dt!=null) q.v = dt.H &#x3e;= 12 ? &#x22;PM&#x22; : &#x22;AM&#x22;; q.t = &#x27;T&#x27;; i+=5; hr=&#x27;h&#x27;; }
+				else { q.t = &#x22;t&#x22;; ++i; }
+				if(dt==null &#x26;&#x26; q.t === &#x27;T&#x27;) return &#x22;&#x22;;
+				out[out.length] = q; lst = c; break;
+			case &#x27;[&#x27;:
+				o = c;
+				while(fmt[i++] !== &#x27;]&#x27; &#x26;&#x26; i &#x3c; fmt.length) o += fmt[i];
+				if(o.substr(-1) !== &#x27;]&#x27;) throw &#x27;unterminated &#x22;[&#x22; block: |&#x27; + o + &#x27;|&#x27;;
+				if(o.match(abstime)) {
+					if(dt==null) { dt=parse_date_code(v, opts); if(dt==null) return &#x22;&#x22;; }
+					out[out.length] = {t:&#x27;Z&#x27;, v:o.toLowerCase()};
+				} else { o=&#x22;&#x22;; }
+				break;
+			/* Numbers */
+			case &#x27;.&#x27;:
+				if(dt != null) {
+					o = c; while((c=fmt[++i]) === &#x22;0&#x22;) o += c;
+					out[out.length] = {t:&#x27;s&#x27;, v:o}; break;
+				}
+				/* falls through */
+			case &#x27;0&#x27;: case &#x27;#&#x27;:
+				o = c; while(&#x22;0#?.,E+-%&#x22;.indexOf(c=fmt[++i]) &#x3e; -1 || c==&#x27;\\&#x27; &#x26;&#x26; fmt[i+1] == &#x22;-&#x22; &#x26;&#x26; &#x22;0#&#x22;.indexOf(fmt[i+2])&#x3e;-1) o += c;
+				out[out.length] = {t:&#x27;n&#x27;, v:o}; break;
+			case &#x27;?&#x27;:
+				o = c; while(fmt[++i] === c) o+=c;
+				q={t:c, v:o}; out[out.length] = q; lst = c; break;
+			case &#x27;*&#x27;: ++i; if(fmt[i] == &#x27; &#x27; || fmt[i] == &#x27;*&#x27;) ++i; break; // **
+			case &#x27;(&#x27;: case &#x27;)&#x27;: out[out.length] = {t:(flen===1?&#x27;t&#x27;:c), v:c}; ++i; break;
+			case &#x27;1&#x27;: case &#x27;2&#x27;: case &#x27;3&#x27;: case &#x27;4&#x27;: case &#x27;5&#x27;: case &#x27;6&#x27;: case &#x27;7&#x27;: case &#x27;8&#x27;: case &#x27;9&#x27;:
+				o = c; while(&#x22;0123456789&#x22;.indexOf(fmt[++i]) &#x3e; -1) o+=fmt[i];
+				out[out.length] = {t:&#x27;D&#x27;, v:o}; break;
+			case &#x27; &#x27;: out[out.length] = {t:c, v:c}; ++i; break;
+			default:
+				if(&#x22;,$-+/():!^&#x26;&#x27;~{}&#x3c;&#x3e;=€acfijklopqrtuvwxz&#x22;.indexOf(c) === -1) throw new Error(&#x27;unrecognized character &#x27; + c + &#x27; in &#x27; + fmt);
+				out[out.length] = {t:&#x27;t&#x27;, v:c}; ++i; break;
+		}
+	}
+	var bt = 0, ss0 = 0, ssm;
+	for(i=out.length-1, lst=&#x27;t&#x27;; i &#x3e;= 0; --i) {
+		switch(out[i].t) {
+			case &#x27;h&#x27;: case &#x27;H&#x27;: out[i].t = hr; lst=&#x27;h&#x27;; if(bt &#x3c; 1) bt = 1; break;
+			case &#x27;s&#x27;:
+				if((ssm=out[i].v.match(/\.0+$/))) ss0=Math.max(ss0,ssm[0].length-1);
+				if(bt &#x3c; 3) bt = 3;
+			/* falls through */
+			case &#x27;d&#x27;: case &#x27;y&#x27;: case &#x27;M&#x27;: case &#x27;e&#x27;: lst=out[i].t; break;
+			case &#x27;m&#x27;: if(lst === &#x27;s&#x27;) { out[i].t = &#x27;M&#x27;; if(bt &#x3c; 2) bt = 2; } break;
+			case &#x27;X&#x27;: if(out[i].v === &#x22;B2&#x22;);
+				break;
+			case &#x27;Z&#x27;:
+				if(bt &#x3c; 1 &#x26;&#x26; out[i].v.match(/[Hh]/)) bt = 1;
+				if(bt &#x3c; 2 &#x26;&#x26; out[i].v.match(/[Mm]/)) bt = 2;
+				if(bt &#x3c; 3 &#x26;&#x26; out[i].v.match(/[Ss]/)) bt = 3;
+		}
+	}
+	switch(bt) {
+		case 0: break;
+		case 1:
+if(dt.u &#x3e;= 0.5) ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.SSF._general" id="apidoc.element.xlsx.SSF._general">
+        function <span class="apidocSignatureSpan">xlsx.SSF.</span>_general
+        <span class="apidocSignatureSpan">(v, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function general_fmt(v, opts) {
+	switch(typeof v) {
+		case &#x27;string&#x27;: return v;
+		case &#x27;boolean&#x27;: return v ? &#x22;TRUE&#x22; : &#x22;FALSE&#x22;;
+		case &#x27;number&#x27;: return (v|0) === v ? general_fmt_int(v, opts) : general_fmt_num(v, opts);
+	}
+	throw new Error(&#x22;unsupported value in General format: &#x22; + v);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.SSF._general_int" id="apidoc.element.xlsx.SSF._general_int">
+        function <span class="apidocSignatureSpan">xlsx.SSF.</span>_general_int
+        <span class="apidocSignatureSpan">(v, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function general_fmt_int(v, opts) { return &#x22;&#x22;+v; }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.SSF._general_num" id="apidoc.element.xlsx.SSF._general_num">
+        function <span class="apidocSignatureSpan">xlsx.SSF.</span>_general_num
+        <span class="apidocSignatureSpan">(v, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function general_fmt_num(v, opts) {
+	var V = Math.floor(Math.log(Math.abs(v))*Math.LOG10E), o;
+	if(V &#x3e;= -4 &#x26;&#x26; V &#x3c;= -1) o = v.toPrecision(10+V);
+	else if(Math.abs(V) &#x3c;= 9) o = gfn2(v);
+	else if(V === 10) o = v.toFixed(10).substr(0,12);
+	else o = gfn3(v);
+	return gfn5(gfn4(o));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.SSF._split" id="apidoc.element.xlsx.SSF._split">
+        function <span class="apidocSignatureSpan">xlsx.SSF.</span>_split
+        <span class="apidocSignatureSpan">(fmt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function split_fmt(fmt) {
+	var out = [];
+	var in_str = false, cc;
+	for(var i = 0, j = 0; i &#x3c; fmt.length; ++i) switch((cc=fmt.charCodeAt(i))) {
+		case 34:<span class="apidocCodeCommentSpan"> /* &#x27;&#x22;&#x27; */
+</span>			in_str = !in_str; break;
+		case 95: case 42: case 92: /* &#x27;_&#x27; &#x27;*&#x27; &#x27;\\&#x27; */
+			++i; break;
+		case 59: /* &#x27;;&#x27; */
+			out[out.length] = fmt.substr(j,i-j);
+			j = i+1;
+	}
+	out[out.length] = fmt.substr(j);
+	if(in_str === true) throw new Error(&#x22;Format |&#x22; + fmt + &#x22;| unterminated string &#x22;);
+	return out;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.SSF.format" id="apidoc.element.xlsx.SSF.format">
+        function <span class="apidocSignatureSpan">xlsx.SSF.</span>format
+        <span class="apidocSignatureSpan">(fmt, v, o)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function format(fmt, v, o) {
+	fixopts(o != null ? o : (o=[]));
+	var sfmt = &#x22;&#x22;;
+	switch(typeof fmt) {
+		case &#x22;string&#x22;: sfmt = fmt; break;
+		case &#x22;number&#x22;: sfmt = (o.table != null ? (o.table) : table_fmt)[fmt]; break;
+	}
+	if(isgeneral(sfmt,0)) return general_fmt(v, o);
+	var f = choose_fmt(sfmt, v);
+	if(isgeneral(f[1])) return general_fmt(v, o);
+	if(v === true) v = &#x22;TRUE&#x22;; else if(v === false) v = &#x22;FALSE&#x22;;
+	else if(v === &#x22;&#x22; || v == null) return &#x22;&#x22;;
+	return eval_fmt(f[1], v, o, f[0]);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.SSF.get_table" id="apidoc.element.xlsx.SSF.get_table">
+        function <span class="apidocSignatureSpan">xlsx.SSF.</span>get_table
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function get_table() { return table_fmt; }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.SSF.load" id="apidoc.element.xlsx.SSF.load">
+        function <span class="apidocSignatureSpan">xlsx.SSF.</span>load
+        <span class="apidocSignatureSpan">(fmt, idx)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function load_entry(fmt, idx) { table_fmt[idx] = fmt; }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.SSF.load_table" id="apidoc.element.xlsx.SSF.load_table">
+        function <span class="apidocSignatureSpan">xlsx.SSF.</span>load_table
+        <span class="apidocSignatureSpan">(tbl)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function load_table(tbl) { for(var i=0; i!=0x0188; ++i) if(tbl[i] !== undefined) SSF.load(tbl[i], i); }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.SSF.parse_date_code" id="apidoc.element.xlsx.SSF.parse_date_code">
+        function <span class="apidocSignatureSpan">xlsx.SSF.</span>parse_date_code
+        <span class="apidocSignatureSpan">(v, opts, b2)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse_date_code(v, opts, b2) {
+	if(v &#x3e; 2958465 || v &#x3c; 0) return null;
+	var date = (v|0), time = Math.floor(86400 * (v - date)), dow=0;
+	var dout=[];
+	var out={D:date, T:time, u:86400*(v-date)-time,y:0,m:0,d:0,H:0,M:0,S:0,q:0};
+	if(Math.abs(out.u) &#x3c; 1e-6) out.u = 0;
+	fixopts(opts != null ? opts : (opts=[]));
+	if(opts.date1904) date += 1462;
+	if(out.u &#x3e; 0.999) {
+		out.u = 0;
+		if(++time == 86400) { time = 0; ++date; }
+	}
+	if(date === 60) {dout = b2 ? [1317,10,29] : [1900,2,29]; dow=3;}
+	else if(date === 0) {dout = b2 ? [1317,8,29] : [1900,1,0]; dow=6;}
+	else {
+		if(date &#x3e; 60) --date;
+		<span class="apidocCodeCommentSpan">/* 1 = Jan 1 1900 in Gregorian */
+</span>		var d = new Date(1900, 0, 1);
+		d.setDate(d.getDate() + date - 1);
+		dout = [d.getFullYear(), d.getMonth()+1,d.getDate()];
+		dow = d.getDay();
+		if(date &#x3c; 60) dow = (dow + 6) % 7;
+		if(b2) dow = fix_hijri(d, dout);
+	}
+	out.y = dout[0]; out.m = dout[1]; out.d = dout[2];
+	out.S = time % 60; time = Math.floor(time / 60);
+	out.M = time % 60; time = Math.floor(time / 60);
+	out.H = time;
+	out.q = dow;
+	return out;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.xlsx.utils" id="apidoc.module.xlsx.utils">module xlsx.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.decode_cell" id="apidoc.element.xlsx.utils.decode_cell">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>decode_cell
+        <span class="apidocSignatureSpan">(cstr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function decode_cell(cstr) { var splt = split_cell(cstr); return { c:decode_col(splt[0]), r:decode_row(splt[1]) }; }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.decode_col" id="apidoc.element.xlsx.utils.decode_col">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>decode_col
+        <span class="apidocSignatureSpan">(colstr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function decode_col(colstr) { var c = unfix_col(colstr), d = 0, i = 0; for(; i !== c.length; ++i) d = 26*d + c.charCodeAt(i) - 64
+; return d - 1; }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.decode_range" id="apidoc.element.xlsx.utils.decode_range">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>decode_range
+        <span class="apidocSignatureSpan">(range)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function decode_range(range) { var x =range.split(&#x22;:&#x22;).map(decode_cell); return {s:x[0],e:x[x.length-1]}; }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.decode_row" id="apidoc.element.xlsx.utils.decode_row">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>decode_row
+        <span class="apidocSignatureSpan">(rowstr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function decode_row(rowstr) { return parseInt(unfix_row(rowstr),10) - 1; }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.encode_cell" id="apidoc.element.xlsx.utils.encode_cell">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>encode_cell
+        <span class="apidocSignatureSpan">(cell)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function encode_cell(cell) { return encode_col(cell.c) + encode_row(cell.r); }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.encode_col" id="apidoc.element.xlsx.utils.encode_col">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>encode_col
+        <span class="apidocSignatureSpan">(col)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function encode_col(col) { var s=&#x22;&#x22;; for(++col; col; col=Math.floor((col-1)/26)) s = String.fromCharCode(((col-1)%26) + 65) + s;
+return s; }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.encode_range" id="apidoc.element.xlsx.utils.encode_range">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>encode_range
+        <span class="apidocSignatureSpan">(cs, ce)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function encode_range(cs, ce) {
+	if(typeof ce === &#x27;undefined&#x27; || typeof ce === &#x27;number&#x27;) {
+return encode_range(cs.s, cs.e);
+	}
+if(typeof cs !== &#x27;string&#x27;) cs = encode_cell((cs));
+	if(typeof ce !== &#x27;string&#x27;) ce = encode_cell((ce));
+return cs == ce ? cs : cs + &#x22;:&#x22; + ce;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.encode_row" id="apidoc.element.xlsx.utils.encode_row">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>encode_row
+        <span class="apidocSignatureSpan">(row)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function encode_row(row) { return &#x22;&#x22; + (row + 1); }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.format_cell" id="apidoc.element.xlsx.utils.format_cell">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>format_cell
+        <span class="apidocSignatureSpan">(cell, v)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function format_cell(cell, v) {
+	if(cell == null || cell.t == null || cell.t == &#x27;z&#x27;) return &#x22;&#x22;;
+	if(cell.w !== undefined) return cell.w;
+	if(v === undefined) return safe_format_cell(cell, cell.v);
+	return safe_format_cell(cell, v);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.get_formulae" id="apidoc.element.xlsx.utils.get_formulae">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>get_formulae
+        <span class="apidocSignatureSpan">(sheet)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sheet_to_formulae(sheet) {
+	var y = &#x22;&#x22;, x, val=&#x22;&#x22;;
+	if(sheet == null || sheet[&#x22;!ref&#x22;] == null) return [];
+	var r = safe_decode_range(sheet[&#x27;!ref&#x27;]), rr = &#x22;&#x22;, cols = [], C;
+	var cmds = new Array((r.e.r-r.s.r+1)*(r.e.c-r.s.c+1));
+	var i = 0;
+	for(C = r.s.c; C &#x3c;= r.e.c; ++C) cols[C] = encode_col(C);
+	for(var R = r.s.r; R &#x3c;= r.e.r; ++R) {
+		rr = encode_row(R);
+		for(C = r.s.c; C &#x3c;= r.e.c; ++C) {
+			y = cols[C] + rr;
+			x = sheet[y];
+			val = &#x22;&#x22;;
+			if(x === undefined) continue;
+			else if(x.F != null) {
+				y = x.F;
+				if(!x.f) continue;
+				val = x.f;
+				if(y.indexOf(&#x22;:&#x22;) == -1) y = y + &#x22;:&#x22; + y;
+			}
+			if(x.f != null) val = x.f;
+			else if(x.t == &#x27;z&#x27;) continue;
+			else if(x.t == &#x27;n&#x27; &#x26;&#x26; x.v != null) val = &#x22;&#x22; + x.v;
+			else if(x.t == &#x27;b&#x27;) val = x.v ? &#x22;TRUE&#x22; : &#x22;FALSE&#x22;;
+			else if(x.w !== undefined) val = &#x22;&#x27;&#x22; + x.w;
+			else if(x.v === undefined) continue;
+			else if(x.t == &#x27;s&#x27;) val = &#x22;&#x27;&#x22; + x.v;
+			else val = &#x22;&#x22;+x.v;
+			cmds[i++] = y + &#x22;=&#x22; + val;
+		}
+	}
+	cmds.length = i;
+	return cmds;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.make_csv" id="apidoc.element.xlsx.utils.make_csv">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>make_csv
+        <span class="apidocSignatureSpan">(sheet, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sheet_to_csv(sheet, opts) {
+	var out = &#x22;&#x22;, txt = &#x22;&#x22;, qreg = /&#x22;/g;
+	var o = opts == null ? {} : opts;
+	if(sheet == null || sheet[&#x22;!ref&#x22;] == null) return &#x22;&#x22;;
+	var r = safe_decode_range(sheet[&#x22;!ref&#x22;]);
+	var FS = o.FS !== undefined ? o.FS : &#x22;,&#x22;, fs = FS.charCodeAt(0);
+	var RS = o.RS !== undefined ? o.RS : &#x22;\n&#x22;, rs = RS.charCodeAt(0);
+	var row = &#x22;&#x22;, rr = &#x22;&#x22;, cols = [];
+	var i = 0, cc = 0, val;
+	var R = 0, C = 0;
+	for(C = r.s.c; C &#x3c;= r.e.c; ++C) cols[C] = encode_col(C);
+	for(R = r.s.r; R &#x3c;= r.e.r; ++R) {
+		row = &#x22;&#x22;;
+		rr = encode_row(R);
+		for(C = r.s.c; C &#x3c;= r.e.c; ++C) {
+			val = sheet[cols[C] + rr];
+			if(val == null) txt = &#x22;&#x22;;
+			else if(val.v != null) {
+				txt = &#x27;&#x27;+format_cell(val);
+				for(i = 0, cc = 0; i !== txt.length; ++i) if((cc = txt.charCodeAt(i)) === fs || cc === rs || cc === 34) {
+					txt = &#x22;\&#x22;&#x22; + txt.replace(qreg, &#x27;&#x22;&#x22;&#x27;) + &#x22;\&#x22;&#x22;; break; }
+			} else if(val.f != null &#x26;&#x26; !val.F) {
+				txt = &#x27;=&#x27; + val.f; if(txt.indexOf(&#x22;,&#x22;) &#x3e;= 0) txt = &#x27;&#x22;&#x27; + txt.replace(qreg, &#x27;&#x22;&#x22;&#x27;) + &#x27;&#x22;&#x27;;
+			} else txt = &#x22;&#x22;;
+			<span class="apidocCodeCommentSpan">/* NOTE: Excel CSV does not support array formulae */
+</span>			row += (C === r.s.c ? &#x22;&#x22; : FS) + txt;
+		}
+		out += row + RS;
+	}
+	return out;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.make_formulae" id="apidoc.element.xlsx.utils.make_formulae">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>make_formulae
+        <span class="apidocSignatureSpan">(sheet)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sheet_to_formulae(sheet) {
+	var y = &#x22;&#x22;, x, val=&#x22;&#x22;;
+	if(sheet == null || sheet[&#x22;!ref&#x22;] == null) return [];
+	var r = safe_decode_range(sheet[&#x27;!ref&#x27;]), rr = &#x22;&#x22;, cols = [], C;
+	var cmds = new Array((r.e.r-r.s.r+1)*(r.e.c-r.s.c+1));
+	var i = 0;
+	for(C = r.s.c; C &#x3c;= r.e.c; ++C) cols[C] = encode_col(C);
+	for(var R = r.s.r; R &#x3c;= r.e.r; ++R) {
+		rr = encode_row(R);
+		for(C = r.s.c; C &#x3c;= r.e.c; ++C) {
+			y = cols[C] + rr;
+			x = sheet[y];
+			val = &#x22;&#x22;;
+			if(x === undefined) continue;
+			else if(x.F != null) {
+				y = x.F;
+				if(!x.f) continue;
+				val = x.f;
+				if(y.indexOf(&#x22;:&#x22;) == -1) y = y + &#x22;:&#x22; + y;
+			}
+			if(x.f != null) val = x.f;
+			else if(x.t == &#x27;z&#x27;) continue;
+			else if(x.t == &#x27;n&#x27; &#x26;&#x26; x.v != null) val = &#x22;&#x22; + x.v;
+			else if(x.t == &#x27;b&#x27;) val = x.v ? &#x22;TRUE&#x22; : &#x22;FALSE&#x22;;
+			else if(x.w !== undefined) val = &#x22;&#x27;&#x22; + x.w;
+			else if(x.v === undefined) continue;
+			else if(x.t == &#x27;s&#x27;) val = &#x22;&#x27;&#x22; + x.v;
+			else val = &#x22;&#x22;+x.v;
+			cmds[i++] = y + &#x22;=&#x22; + val;
+		}
+	}
+	cmds.length = i;
+	return cmds;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.make_json" id="apidoc.element.xlsx.utils.make_json">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>make_json
+        <span class="apidocSignatureSpan">(sheet, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sheet_to_json(sheet, opts){
+	var val, row, range, header = 0, offset = 1, r, hdr = [], isempty, R, C, v, vv;
+	var o = opts != null ? opts : {};
+	var raw = o.raw;
+	if(sheet == null || sheet[&#x22;!ref&#x22;] == null) return [];
+	range = o.range !== undefined ? o.range : sheet[&#x22;!ref&#x22;];
+	if(o.header === 1) header = 1;
+	else if(o.header === &#x22;A&#x22;) header = 2;
+	else if(Array.isArray(o.header)) header = 3;
+	switch(typeof range) {
+		case &#x27;string&#x27;: r = safe_decode_range(range); break;
+		case &#x27;number&#x27;: r = safe_decode_range(sheet[&#x22;!ref&#x22;]); r.s.r = range; break;
+		default: r = range;
+	}
+	if(header &#x3e; 0) offset = 0;
+	var rr = encode_row(r.s.r);
+	var cols = new Array(r.e.c-r.s.c+1);
+	var out = new Array(r.e.r-r.s.r-offset+1);
+	var outi = 0;
+	for(C = r.s.c; C &#x3c;= r.e.c; ++C) {
+		cols[C] = encode_col(C);
+		val = sheet[cols[C] + rr];
+		switch(header) {
+			case 1: hdr[C] = C; break;
+			case 2: hdr[C] = cols[C]; break;
+			case 3: hdr[C] = o.header[C - r.s.c]; break;
+			default:
+				if(val === undefined) continue;
+				vv = v = format_cell(val);
+				var counter = 0;
+				for(var CC = 0; CC &#x3c; hdr.length; ++CC) if(hdr[CC] == vv) vv = v + &#x22;_&#x22; + (++counter);
+				hdr[C] = vv;
+		}
+	}
+
+	for (R = r.s.r + offset; R &#x3c;= r.e.r; ++R) {
+		rr = encode_row(R);
+		isempty = true;
+		if(header === 1) row = [];
+		else {
+			row = {};
+			if(Object.defineProperty) Object.defineProperty(row, &#x27;__rowNum__&#x27;, {value:R, enumerable:false});
+			else row.__rowNum__ = R;
+		}
+		for (C = r.s.c; C &#x3c;= r.e.c; ++C) {
+			val = sheet[cols[C] + rr];
+			if(val === undefined || val.t === undefined) continue;
+			v = val.v;
+			switch(val.t){
+				case &#x27;z&#x27;: continue;
+				case &#x27;e&#x27;: continue;
+				case &#x27;s&#x27;: break;
+				case &#x27;b&#x27;: case &#x27;n&#x27;: break;
+				default: throw &#x27;unrecognized type &#x27; + val.t;
+			}
+			if(v !== undefined) {
+				row[hdr[C]] = raw ? v : format_cell(val,v);
+				isempty = false;
+			}
+		}
+		if(isempty === false || header === 1) out[outi++] = row;
+	}
+	out.length = outi;
+	return out;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.sheet_to_csv" id="apidoc.element.xlsx.utils.sheet_to_csv">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>sheet_to_csv
+        <span class="apidocSignatureSpan">(sheet, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sheet_to_csv(sheet, opts) {
+	var out = &#x22;&#x22;, txt = &#x22;&#x22;, qreg = /&#x22;/g;
+	var o = opts == null ? {} : opts;
+	if(sheet == null || sheet[&#x22;!ref&#x22;] == null) return &#x22;&#x22;;
+	var r = safe_decode_range(sheet[&#x22;!ref&#x22;]);
+	var FS = o.FS !== undefined ? o.FS : &#x22;,&#x22;, fs = FS.charCodeAt(0);
+	var RS = o.RS !== undefined ? o.RS : &#x22;\n&#x22;, rs = RS.charCodeAt(0);
+	var row = &#x22;&#x22;, rr = &#x22;&#x22;, cols = [];
+	var i = 0, cc = 0, val;
+	var R = 0, C = 0;
+	for(C = r.s.c; C &#x3c;= r.e.c; ++C) cols[C] = encode_col(C);
+	for(R = r.s.r; R &#x3c;= r.e.r; ++R) {
+		row = &#x22;&#x22;;
+		rr = encode_row(R);
+		for(C = r.s.c; C &#x3c;= r.e.c; ++C) {
+			val = sheet[cols[C] + rr];
+			if(val == null) txt = &#x22;&#x22;;
+			else if(val.v != null) {
+				txt = &#x27;&#x27;+format_cell(val);
+				for(i = 0, cc = 0; i !== txt.length; ++i) if((cc = txt.charCodeAt(i)) === fs || cc === rs || cc === 34) {
+					txt = &#x22;\&#x22;&#x22; + txt.replace(qreg, &#x27;&#x22;&#x22;&#x27;) + &#x22;\&#x22;&#x22;; break; }
+			} else if(val.f != null &#x26;&#x26; !val.F) {
+				txt = &#x27;=&#x27; + val.f; if(txt.indexOf(&#x22;,&#x22;) &#x3e;= 0) txt = &#x27;&#x22;&#x27; + txt.replace(qreg, &#x27;&#x22;&#x22;&#x27;) + &#x27;&#x22;&#x27;;
+			} else txt = &#x22;&#x22;;
+			<span class="apidocCodeCommentSpan">/* NOTE: Excel CSV does not support array formulae */
+</span>			row += (C === r.s.c ? &#x22;&#x22; : FS) + txt;
+		}
+		out += row + RS;
+	}
+	return out;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+| :---------- | :------: | :-------------------------------------------------- |
+| FS          |  `&#x22;,&#x22;`   | &#x22;Field Separator&#x22;  delimiter between fields         |
+| RS          |  `&#x22;\n&#x22;`  | &#x22;Record Separator&#x22; delimiter between rows           |
+
+For the example sheet:
+
+```js
+&#x3e; console.log(XLSX.utils.<span class="apidocCodeKeywordSpan">sheet_to_csv</span>(ws));
+S,h,e,e,t,J,S
+1,2,3,4,5,6,7
+2,3,4,5,6,7,8
+&#x3e; console.log(XLSX.utils.sheet_to_csv(ws, {FS:&#x22;\t&#x22;}));
+S	h	e	e	t	J	S
+1	2	3	4	5	6	7
+2	3	4	5	6	7	8
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.sheet_to_formulae" id="apidoc.element.xlsx.utils.sheet_to_formulae">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>sheet_to_formulae
+        <span class="apidocSignatureSpan">(sheet)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sheet_to_formulae(sheet) {
+	var y = &#x22;&#x22;, x, val=&#x22;&#x22;;
+	if(sheet == null || sheet[&#x22;!ref&#x22;] == null) return [];
+	var r = safe_decode_range(sheet[&#x27;!ref&#x27;]), rr = &#x22;&#x22;, cols = [], C;
+	var cmds = new Array((r.e.r-r.s.r+1)*(r.e.c-r.s.c+1));
+	var i = 0;
+	for(C = r.s.c; C &#x3c;= r.e.c; ++C) cols[C] = encode_col(C);
+	for(var R = r.s.r; R &#x3c;= r.e.r; ++R) {
+		rr = encode_row(R);
+		for(C = r.s.c; C &#x3c;= r.e.c; ++C) {
+			y = cols[C] + rr;
+			x = sheet[y];
+			val = &#x22;&#x22;;
+			if(x === undefined) continue;
+			else if(x.F != null) {
+				y = x.F;
+				if(!x.f) continue;
+				val = x.f;
+				if(y.indexOf(&#x22;:&#x22;) == -1) y = y + &#x22;:&#x22; + y;
+			}
+			if(x.f != null) val = x.f;
+			else if(x.t == &#x27;z&#x27;) continue;
+			else if(x.t == &#x27;n&#x27; &#x26;&#x26; x.v != null) val = &#x22;&#x22; + x.v;
+			else if(x.t == &#x27;b&#x27;) val = x.v ? &#x22;TRUE&#x22; : &#x22;FALSE&#x22;;
+			else if(x.w !== undefined) val = &#x22;&#x27;&#x22; + x.w;
+			else if(x.v === undefined) continue;
+			else if(x.t == &#x27;s&#x27;) val = &#x22;&#x27;&#x22; + x.v;
+			else val = &#x22;&#x22;+x.v;
+			cmds[i++] = y + &#x22;=&#x22; + val;
+		}
+	}
+	cmds.length = i;
+	return cmds;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+`XLSX.utils.sheet_to_formulae` generates an array of commands that represent
+how a person would enter data into an application.  Each entry is of the form
+`A1-cell-address=formula-or-value`.  String literals are prefixed with a `&#x27;` in
+accordance with Excel.  For the example sheet:
+
+```js
+&#x3e; var o = XLSX.utils.<span class="apidocCodeKeywordSpan">sheet_to_formulae</span>(ws);
+&#x3e; o.filter(function(v, i) { return i % 5 === 0; });
+[ &#x27;A1=\&#x27;S&#x27;, &#x27;F1=\&#x27;J&#x27;, &#x27;D2=4&#x27;, &#x27;B3=3&#x27;, &#x27;G3=8&#x27; ]
+```
+
+### CSV and general DSV Output
+
+As an alternative to the `writeFile` CSV type, `XLSX.utils.sheet_to_csv` also
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.sheet_to_json" id="apidoc.element.xlsx.utils.sheet_to_json">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>sheet_to_json
+        <span class="apidocSignatureSpan">(sheet, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sheet_to_json(sheet, opts){
+	var val, row, range, header = 0, offset = 1, r, hdr = [], isempty, R, C, v, vv;
+	var o = opts != null ? opts : {};
+	var raw = o.raw;
+	if(sheet == null || sheet[&#x22;!ref&#x22;] == null) return [];
+	range = o.range !== undefined ? o.range : sheet[&#x22;!ref&#x22;];
+	if(o.header === 1) header = 1;
+	else if(o.header === &#x22;A&#x22;) header = 2;
+	else if(Array.isArray(o.header)) header = 3;
+	switch(typeof range) {
+		case &#x27;string&#x27;: r = safe_decode_range(range); break;
+		case &#x27;number&#x27;: r = safe_decode_range(sheet[&#x22;!ref&#x22;]); r.s.r = range; break;
+		default: r = range;
+	}
+	if(header &#x3e; 0) offset = 0;
+	var rr = encode_row(r.s.r);
+	var cols = new Array(r.e.c-r.s.c+1);
+	var out = new Array(r.e.r-r.s.r-offset+1);
+	var outi = 0;
+	for(C = r.s.c; C &#x3c;= r.e.c; ++C) {
+		cols[C] = encode_col(C);
+		val = sheet[cols[C] + rr];
+		switch(header) {
+			case 1: hdr[C] = C; break;
+			case 2: hdr[C] = cols[C]; break;
+			case 3: hdr[C] = o.header[C - r.s.c]; break;
+			default:
+				if(val === undefined) continue;
+				vv = v = format_cell(val);
+				var counter = 0;
+				for(var CC = 0; CC &#x3c; hdr.length; ++CC) if(hdr[CC] == vv) vv = v + &#x22;_&#x22; + (++counter);
+				hdr[C] = vv;
+		}
+	}
+
+	for (R = r.s.r + offset; R &#x3c;= r.e.r; ++R) {
+		rr = encode_row(R);
+		isempty = true;
+		if(header === 1) row = [];
+		else {
+			row = {};
+			if(Object.defineProperty) Object.defineProperty(row, &#x27;__rowNum__&#x27;, {value:R, enumerable:false});
+			else row.__rowNum__ = R;
+		}
+		for (C = r.s.c; C &#x3c;= r.e.c; ++C) {
+			val = sheet[cols[C] + rr];
+			if(val === undefined || val.t === undefined) continue;
+			v = val.v;
+			switch(val.t){
+				case &#x27;z&#x27;: continue;
+				case &#x27;e&#x27;: continue;
+				case &#x27;s&#x27;: break;
+				case &#x27;b&#x27;: case &#x27;n&#x27;: break;
+				default: throw &#x27;unrecognized type &#x27; + val.t;
+			}
+			if(v !== undefined) {
+				row[hdr[C]] = raw ? v : format_cell(val,v);
+				isempty = false;
+			}
+		}
+		if(isempty === false || header === 1) out[outi++] = row;
+	}
+	out.length = outi;
+	return out;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+| `&#x22;A&#x22;`            | Row object keys are literal column labels                 |
+| array of strings | Use specified strings as keys in row objects              |
+| (default)        | Read and disambiguate first row as keys                   |
+
+For the example sheet:
+
+```js
+&#x3e; console.log(X.utils.<span class="apidocCodeKeywordSpan">sheet_to_json</span>(_ws));
+[ { S: 1, h: 2, e: 3, e_1: 4, t: 5, J: 6, S_1: 7 },
+{ S: 2, h: 3, e: 4, e_1: 5, t: 6, J: 7, S_1: 8 } ]
+
+&#x3e; console.log(X.utils.sheet_to_json(_ws, {header:1}));
+[ [ &#x27;S&#x27;, &#x27;h&#x27;, &#x27;e&#x27;, &#x27;e&#x27;, &#x27;t&#x27;, &#x27;J&#x27;, &#x27;S&#x27; ],
+[ 1, 2, 3, 4, 5, 6, 7 ],
+[ 2, 3, 4, 5, 6, 7, 8 ] ]
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.sheet_to_row_object_array" id="apidoc.element.xlsx.utils.sheet_to_row_object_array">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>sheet_to_row_object_array
+        <span class="apidocSignatureSpan">(sheet, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sheet_to_row_object_array(sheet, opts) { return sheet_to_json(sheet, opts != null ? opts : {}); }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.utils.split_cell" id="apidoc.element.xlsx.utils.split_cell">
+        function <span class="apidocSignatureSpan">xlsx.utils.</span>split_cell
+        <span class="apidocSignatureSpan">(cstr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function split_cell(cstr) { return cstr.replace(/(\$?[A-Z]*)(\$?\d*)/,&#x22;$1,$2&#x22;).split(&#x22;,&#x22;); }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
