@@ -46,12 +46,12 @@
     font-weight: bold;
 }
 </style>
-<h1>api-documentation for
+<h1>api documentation for
     <a
 
         href="https://oss.sheetjs.com/js-xlsx/"
 
-    >xlsx (v0.9.4)</a>
+    >xlsx (v0.9.5)</a>
 </h1>
 <h4>Excel (XLSB/XLSX/XLSM/XLS/XML) and ODS (ODS/FODS/UOS) spreadsheet parser and writer</h4>
 <div class="apidocSectionDiv"><a
@@ -339,6 +339,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.xlsx.SSF.is_date">
+            function <span class="apidocSignatureSpan">xlsx.SSF.</span>is_date
+            <span class="apidocSignatureSpan">(fmt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.xlsx.SSF.load">
             function <span class="apidocSignatureSpan">xlsx.SSF.</span>load
             <span class="apidocSignatureSpan">(fmt, idx)</span>
@@ -462,7 +471,7 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.xlsx.utils.format_cell">
             function <span class="apidocSignatureSpan">xlsx.utils.</span>format_cell
-            <span class="apidocSignatureSpan">(cell, v)</span>
+            <span class="apidocSignatureSpan">(cell, v, o)</span>
             </a>
 
         </li>
@@ -780,18 +789,19 @@ return WorkbookP;
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function readSync(data, opts) {
-	var zip, d = data, n=0;
+	var zip, d = data, n=[0];
 	var o = opts||{};
 	if(!o.type) o.type = (has_buf &#x26;&#x26; Buffer.isBuffer(data)) ? &#x22;buffer&#x22; : &#x22;base64&#x22;;
 	if(o.type == &#x22;file&#x22;) { o.type = &#x22;buffer&#x22;; d = _fs.readFileSync(data); }
-	switch((n = firstbyte(d, o))) {
+	switch((n = firstbyte(d, o))[0]) {
 		case 0xD0: return parse_xlscfb(CFB.read(d, o), o);
 		case 0x09: return parse_xlscfb(s2a(o.type === &#x27;base64&#x27; ? Base64.decode(d) : d), o);
 		case 0x3C: return parse_xlml(d, o);
-		case 0x50: return read_zip(d, o);
+		case 0x50: if(n[1] == 0x4B &#x26;&#x26; n[2] &#x3c; 0x20 &#x26;&#x26; n[3] &#x3c; 0x20) return read_zip(d, o); break;
 		case 0xEF: return parse_xlml(d, o);
-		default: throw new Error(&#x22;Unsupported file &#x22; + n);
+		default: throw new Error(&#x22;Unsupported file &#x22; + n.join(&#x22;|&#x22;));
 	}
+	throw new Error(&#x22;Unsupported file format &#x22; + n.join(&#x22;|&#x22;));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   /* convert data to binary string */
@@ -1346,14 +1356,14 @@ oReq.send();
 			case &#x27;&#x22;&#x27;: /* Literal text */
 				for(o=&#x22;&#x22;;(cc=fmt.charCodeAt(++i)) !== 34 &#x26;&#x26; i &#x3c; fmt.length;) o += String.fromCharCode(cc);
 				out[out.length] = {t:&#x27;t&#x27;, v:o}; ++i; break;
-			case &#x27;\\&#x27;: var w = fmt[++i], t = (w === &#x22;(&#x22; || w === &#x22;)&#x22;) ? w : &#x27;t&#x27;;
+			case &#x27;\\&#x27;: var w = fmt.charAt(++i), t = (w === &#x22;(&#x22; || w === &#x22;)&#x22;) ? w : &#x27;t&#x27;;
 				out[out.length] = {t:t, v:w}; ++i; break;
 			case &#x27;_&#x27;: out[out.length] = {t:&#x27;t&#x27;, v:&#x22; &#x22;}; i+=2; break;
 			case &#x27;@&#x27;: /* Text Placeholder */
 				out[out.length] = {t:&#x27;T&#x27;, v:v}; ++i; break;
 			case &#x27;B&#x27;: case &#x27;b&#x27;:
-				if(fmt[i+1] === &#x22;1&#x22; || fmt[i+1] === &#x22;2&#x22;) {
-					if(dt==null) { dt=parse_date_code(v, opts, fmt[i+1] === &#x22;2&#x22;); if(dt==null) return &#x22;&#x22;; }
+				if(fmt.charAt(i+1) === &#x22;1&#x22; || fmt.charAt(i+1) === &#x22;2&#x22;) {
+					if(dt==null) { dt=parse_date_code(v, opts, fmt.charAt(i+1) === &#x22;2&#x22;); if(dt==null) return &#x22;&#x22;; }
 					out[out.length] = {t:&#x27;X&#x27;, v:fmt.substr(i,2)}; lst = c; i+=2; break;
 				}
 				/* falls through */
@@ -1363,7 +1373,7 @@ oReq.send();
 			case &#x27;m&#x27;: case &#x27;d&#x27;: case &#x27;y&#x27;: case &#x27;h&#x27;: case &#x27;s&#x27;: case &#x27;e&#x27;: case &#x27;g&#x27;:
 				if(v &#x3c; 0) return &#x22;&#x22;;
 				if(dt==null) { dt=parse_date_code(v, opts); if(dt==null) return &#x22;&#x22;; }
-				o = c; while(++i&#x3c;fmt.length &#x26;&#x26; fmt[i].toLowerCase() === c) o+=c;
+				o = c; while(++i&#x3c;fmt.length &#x26;&#x26; fmt.charAt(i).toLowerCase() === c) o+=c;
 				if(c === &#x27;m&#x27; &#x26;&#x26; lst.toLowerCase() === &#x27;h&#x27;) c = &#x27;M&#x27;; /* m = minute */
 				if(c === &#x27;h&#x27;) c = hr;
 				out[out.length] = {t:c, v:o}; lst = c; break;
@@ -1377,8 +1387,8 @@ oReq.send();
 				out[out.length] = q; lst = c; break;
 			case &#x27;[&#x27;:
 				o = c;
-				while(fmt[i++] !== &#x27;]&#x27; &#x26;&#x26; i &#x3c; fmt.length) o += fmt[i];
-				if(o.substr(-1) !== &#x27;]&#x27;) throw &#x27;unterminated &#x22;[&#x22; block: |&#x27; + o + &#x27;|&#x27;;
+				while(fmt.charAt(i++) !== &#x27;]&#x27; &#x26;&#x26; i &#x3c; fmt.length) o += fmt.charAt(i);
+				if(o.slice(-1) !== &#x27;]&#x27;) throw &#x27;unterminated &#x22;[&#x22; block: |&#x27; + o + &#x27;|&#x27;;
 				if(o.match(abstime)) {
 					if(dt==null) { dt=parse_date_code(v, opts); if(dt==null) return &#x22;&#x22;; }
 					out[out.length] = {t:&#x27;Z&#x27;, v:o.toLowerCase()};
@@ -1387,20 +1397,21 @@ oReq.send();
 			/* Numbers */
 			case &#x27;.&#x27;:
 				if(dt != null) {
-					o = c; while((c=fmt[++i]) === &#x22;0&#x22;) o += c;
+					o = c; while((c=fmt.charAt(++i)) === &#x22;0&#x22;) o += c;
 					out[out.length] = {t:&#x27;s&#x27;, v:o}; break;
 				}
 				/* falls through */
 			case &#x27;0&#x27;: case &#x27;#&#x27;:
-				o = c; while(&#x22;0#?.,E+-%&#x22;.indexOf(c=fmt[++i]) &#x3e; -1 || c==&#x27;\\&#x27; &#x26;&#x26; fmt[i+1] == &#x22;-&#x22; &#x26;&#x26; &#x22;0#&#x22;.indexOf(fmt[i+2])&#x3e;-1) o += c;
+				o = c; while(++i &#x3c; fmt.length &#x26;&#x26; &#x22;0#?.,E+-%&#x22;.indexOf(c=fmt.charAt(i)) &#x3e; -1 || c==&#x27;\\&#x27; &#x26;&#x26; fmt.charAt(i+1) == &#x22;-&#x22; &#x26;&#x26; &#x22;0#&#x22;.indexOf
+(fmt.charAt(i+2))&#x3e;-1) o += c;
 				out[out.length] = {t:&#x27;n&#x27;, v:o}; break;
 			case &#x27;?&#x27;:
-				o = c; while(fmt[++i] === c) o+=c;
+				o = c; while(fmt.charAt(++i) === c) o+=c;
 				q={t:c, v:o}; out[out.length] = q; lst = c; break;
-			case &#x27;*&#x27;: ++i; if(fmt[i] == &#x27; &#x27; || fmt[i] == &#x27;*&#x27;) ++i; break; // **
+			case &#x27;*&#x27;: ++i; if(fmt.charAt(i) == &#x27; &#x27; || fmt.charAt(i) == &#x27;*&#x27;) ++i; break; // **
 			case &#x27;(&#x27;: case &#x27;)&#x27;: out[out.length] = {t:(flen===1?&#x27;t&#x27;:c), v:c}; ++i; break;
 			case &#x27;1&#x27;: case &#x27;2&#x27;: case &#x27;3&#x27;: case &#x27;4&#x27;: case &#x27;5&#x27;: case &#x27;6&#x27;: case &#x27;7&#x27;: case &#x27;8&#x27;: case &#x27;9&#x27;:
-				o = c; while(&#x22;0123456789&#x22;.indexOf(fmt[++i]) &#x3e; -1) o+=fmt[i];
+				o = c; while(i &#x3c; fmt.length &#x26;&#x26; &#x22;0123456789&#x22;.indexOf(fmt.charAt(++i)) &#x3e; -1) o+=fmt.charAt(i);
 				out[out.length] = {t:&#x27;D&#x27;, v:o}; break;
 			case &#x27; &#x27;: out[out.length] = {t:c, v:c}; ++i; break;
 			default:
@@ -1422,14 +1433,7 @@ oReq.send();
 				break;
 			case &#x27;Z&#x27;:
 				if(bt &#x3c; 1 &#x26;&#x26; out[i].v.match(/[Hh]/)) bt = 1;
-				if(bt &#x3c; 2 &#x26;&#x26; out[i].v.match(/[Mm]/)) bt = 2;
-				if(bt &#x3c; 3 &#x26;&#x26; out[i].v.match(/[Ss]/)) bt = 3;
-		}
-	}
-	switch(bt) {
-		case 0: break;
-		case 1:
-if(dt.u &#x3e;= 0.5) ...</pre></li>
+				if(bt &#x3c; 2 ...</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -1550,6 +1554,59 @@ if(dt.u &#x3e;= 0.5) ...</pre></li>
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function get_table() { return table_fmt; }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xlsx.SSF.is_date" id="apidoc.element.xlsx.SSF.is_date">
+        function <span class="apidocSignatureSpan">xlsx.SSF.</span>is_date
+        <span class="apidocSignatureSpan">(fmt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function fmt_is_date(fmt) {
+	var i = 0, cc = 0, c = &#x22;&#x22;, o = &#x22;&#x22;;
+	while(i &#x3c; fmt.length) {
+		switch((c = fmt.charAt(i))) {
+			case &#x27;G&#x27;: if(isgeneral(fmt, i)) i+= 6; i++; break;
+			case &#x27;&#x22;&#x27;: for(;(cc=fmt.charCodeAt(++i)) !== 34 &#x26;&#x26; i &#x3c; fmt.length;) ++i; ++i; break;
+			case &#x27;\\&#x27;: i+=2; break;
+			case &#x27;_&#x27;: i+=2; break;
+			case &#x27;@&#x27;: ++i; break;
+			case &#x27;B&#x27;: case &#x27;b&#x27;:
+				if(fmt.charAt(i+1) === &#x22;1&#x22; || fmt.charAt(i+1) === &#x22;2&#x22;) return true;
+				<span class="apidocCodeCommentSpan">/* falls through */
+</span>			case &#x27;M&#x27;: case &#x27;D&#x27;: case &#x27;Y&#x27;: case &#x27;H&#x27;: case &#x27;S&#x27;: case &#x27;E&#x27;:
+				/* falls through */
+			case &#x27;m&#x27;: case &#x27;d&#x27;: case &#x27;y&#x27;: case &#x27;h&#x27;: case &#x27;s&#x27;: case &#x27;e&#x27;: case &#x27;g&#x27;: return true;
+			case &#x27;A&#x27;:
+				if(fmt.substr(i, 3) === &#x22;A/P&#x22;) return true;
+				if(fmt.substr(i, 5) === &#x22;AM/PM&#x22;) return true;
+				++i; break;
+			case &#x27;[&#x27;:
+				o = c;
+				while(fmt.charAt(i++) !== &#x27;]&#x27; &#x26;&#x26; i &#x3c; fmt.length) o += fmt.charAt(i);
+				if(o.match(abstime)) return true;
+				break;
+			case &#x27;.&#x27;:
+				/* falls through */
+			case &#x27;0&#x27;: case &#x27;#&#x27;:
+				while(i &#x3c; fmt.length &#x26;&#x26; (&#x22;0#?.,E+-%&#x22;.indexOf(c=fmt.charAt(++i)) &#x3e; -1 || c==&#x27;\\&#x27; &#x26;&#x26; fmt.charAt(i+1) == &#x22;-&#x22; &#x26;&#x26; &#x22;0#&#x22;.indexOf(fmt
+.charAt(i+2))&#x3e;-1));
+				break;
+			case &#x27;?&#x27;: while(fmt.charAt(++i) === c); break;
+			case &#x27;*&#x27;: ++i; if(fmt.charAt(i) == &#x27; &#x27; || fmt.charAt(i) == &#x27;*&#x27;) ++i; break;
+			case &#x27;(&#x27;: case &#x27;)&#x27;: ++i; break;
+			case &#x27;1&#x27;: case &#x27;2&#x27;: case &#x27;3&#x27;: case &#x27;4&#x27;: case &#x27;5&#x27;: case &#x27;6&#x27;: case &#x27;7&#x27;: case &#x27;8&#x27;: case &#x27;9&#x27;:
+				while(i &#x3c; fmt.length &#x26;&#x26; &#x22;0123456789&#x22;.indexOf(fmt.charAt(++i)) &#x3e; -1); break;
+			case &#x27; &#x27;: ++i; break;
+			default: ++i; break;
+		}
+	}
+	return false;
+}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -1751,14 +1808,15 @@ return cs == ce ? cs : cs + &#x22;:&#x22; + ce;
     <h2>
         <a href="#apidoc.element.xlsx.utils.format_cell" id="apidoc.element.xlsx.utils.format_cell">
         function <span class="apidocSignatureSpan">xlsx.utils.</span>format_cell
-        <span class="apidocSignatureSpan">(cell, v)</span>
+        <span class="apidocSignatureSpan">(cell, v, o)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function format_cell(cell, v) {
+    <li>description and source-code<pre class="apidocCodePre">function format_cell(cell, v, o) {
 	if(cell == null || cell.t == null || cell.t == &#x27;z&#x27;) return &#x22;&#x22;;
 	if(cell.w !== undefined) return cell.w;
-	if(v === undefined) return safe_format_cell(cell, cell.v);
+	if(cell.t == &#x27;d&#x27; &#x26;&#x26; !cell.z &#x26;&#x26; o &#x26;&#x26; o.dateNF) cell.z = o.dateNF;
+	if(v == undefined) return safe_format_cell(cell, cell.v);
 	return safe_format_cell(cell, v);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1826,6 +1884,7 @@ return cs == ce ? cs : cs + &#x22;:&#x22; + ce;
 	var r = safe_decode_range(sheet[&#x22;!ref&#x22;]);
 	var FS = o.FS !== undefined ? o.FS : &#x22;,&#x22;, fs = FS.charCodeAt(0);
 	var RS = o.RS !== undefined ? o.RS : &#x22;\n&#x22;, rs = RS.charCodeAt(0);
+	var endregex = new RegExp(FS+&#x22;+$&#x22;);
 	var row = &#x22;&#x22;, rr = &#x22;&#x22;, cols = [];
 	var i = 0, cc = 0, val;
 	var R = 0, C = 0;
@@ -1846,6 +1905,7 @@ return cs == ce ? cs : cs + &#x22;:&#x22; + ce;
 			<span class="apidocCodeCommentSpan">/* NOTE: Excel CSV does not support array formulae */
 </span>			row += (C === r.s.c ? &#x22;&#x22; : FS) + txt;
 		}
+		if(o.strip) row = row.replace(endregex,&#x22;&#x22;);
 		out += row + RS;
 	}
 	return out;
@@ -1913,7 +1973,7 @@ return cs == ce ? cs : cs + &#x22;:&#x22; + ce;
 	var o = opts != null ? opts : {};
 	var raw = o.raw;
 	if(sheet == null || sheet[&#x22;!ref&#x22;] == null) return [];
-	range = o.range !== undefined ? o.range : sheet[&#x22;!ref&#x22;];
+	range = o.range != null ? o.range : sheet[&#x22;!ref&#x22;];
 	if(o.header === 1) header = 1;
 	else if(o.header === &#x22;A&#x22;) header = 2;
 	else if(Array.isArray(o.header)) header = 3;
@@ -1935,7 +1995,7 @@ return cs == ce ? cs : cs + &#x22;:&#x22; + ce;
 			case 2: hdr[C] = cols[C]; break;
 			case 3: hdr[C] = o.header[C - r.s.c]; break;
 			default:
-				if(val === undefined) continue;
+				if(val == null) continue;
 				vv = v = format_cell(val);
 				var counter = 0;
 				for(var CC = 0; CC &#x3c; hdr.length; ++CC) if(hdr[CC] == vv) vv = v + &#x22;_&#x22; + (++counter);
@@ -1949,7 +2009,8 @@ return cs == ce ? cs : cs + &#x22;:&#x22; + ce;
 		if(header === 1) row = [];
 		else {
 			row = {};
-			if(Object.defineProperty) Object.defineProperty(row, &#x27;__rowNum__&#x27;, {value:R, enumerable:false});
+			if(Object.defineProperty) try { Object.defineProperty(row, &#x27;__rowNum__&#x27;, {value:R, enumerable:false}); } catch(e) { row.__rowNum__
+ = R; }
 			else row.__rowNum__ = R;
 		}
 		for (C = r.s.c; C &#x3c;= r.e.c; ++C) {
@@ -1959,9 +2020,8 @@ return cs == ce ? cs : cs + &#x22;:&#x22; + ce;
 			switch(val.t){
 				case &#x27;z&#x27;: continue;
 				case &#x27;e&#x27;: continue;
-				case &#x27;s&#x27;: break;
-				case &#x27;b&#x27;: case &#x27;n&#x27;: break;
-				default: throw &#x27;unrecognized type &#x27; + val.t;
+				case &#x27;s&#x27;: case &#x27;d&#x27;: case &#x27;b&#x27;: case &#x27;n&#x27;: break;
+				default: throw new Error(&#x27;unrecognized type &#x27; + val.t);
 			}
 			if(v !== undefined) {
 				row[hdr[C]] = raw ? v : format_cell(val,v);
@@ -1992,6 +2052,7 @@ return cs == ce ? cs : cs + &#x22;:&#x22; + ce;
 	var r = safe_decode_range(sheet[&#x22;!ref&#x22;]);
 	var FS = o.FS !== undefined ? o.FS : &#x22;,&#x22;, fs = FS.charCodeAt(0);
 	var RS = o.RS !== undefined ? o.RS : &#x22;\n&#x22;, rs = RS.charCodeAt(0);
+	var endregex = new RegExp(FS+&#x22;+$&#x22;);
 	var row = &#x22;&#x22;, rr = &#x22;&#x22;, cols = [];
 	var i = 0, cc = 0, val;
 	var R = 0, C = 0;
@@ -2012,14 +2073,15 @@ return cs == ce ? cs : cs + &#x22;:&#x22; + ce;
 			<span class="apidocCodeCommentSpan">/* NOTE: Excel CSV does not support array formulae */
 </span>			row += (C === r.s.c ? &#x22;&#x22; : FS) + txt;
 		}
+		if(o.strip) row = row.replace(endregex,&#x22;&#x22;);
 		out += row + RS;
 	}
 	return out;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-| :---------- | :------: | :-------------------------------------------------- |
-| FS          |  `&#x22;,&#x22;`   | &#x22;Field Separator&#x22;  delimiter between fields         |
-| RS          |  `&#x22;\n&#x22;`  | &#x22;Record Separator&#x22; delimiter between rows           |
+| strip       |  false   | Remove trailing field separators in each record **  |
+
+- `strip` will remove trailing commas from each line under default `FS/RS`
 
 For the example sheet:
 
@@ -2111,7 +2173,7 @@ As an alternative to the `writeFile` CSV type, `XLSX.utils.sheet_to_csv` also
 	var o = opts != null ? opts : {};
 	var raw = o.raw;
 	if(sheet == null || sheet[&#x22;!ref&#x22;] == null) return [];
-	range = o.range !== undefined ? o.range : sheet[&#x22;!ref&#x22;];
+	range = o.range != null ? o.range : sheet[&#x22;!ref&#x22;];
 	if(o.header === 1) header = 1;
 	else if(o.header === &#x22;A&#x22;) header = 2;
 	else if(Array.isArray(o.header)) header = 3;
@@ -2133,7 +2195,7 @@ As an alternative to the `writeFile` CSV type, `XLSX.utils.sheet_to_csv` also
 			case 2: hdr[C] = cols[C]; break;
 			case 3: hdr[C] = o.header[C - r.s.c]; break;
 			default:
-				if(val === undefined) continue;
+				if(val == null) continue;
 				vv = v = format_cell(val);
 				var counter = 0;
 				for(var CC = 0; CC &#x3c; hdr.length; ++CC) if(hdr[CC] == vv) vv = v + &#x22;_&#x22; + (++counter);
@@ -2147,7 +2209,8 @@ As an alternative to the `writeFile` CSV type, `XLSX.utils.sheet_to_csv` also
 		if(header === 1) row = [];
 		else {
 			row = {};
-			if(Object.defineProperty) Object.defineProperty(row, &#x27;__rowNum__&#x27;, {value:R, enumerable:false});
+			if(Object.defineProperty) try { Object.defineProperty(row, &#x27;__rowNum__&#x27;, {value:R, enumerable:false}); } catch(e) { row.__rowNum__
+ = R; }
 			else row.__rowNum__ = R;
 		}
 		for (C = r.s.c; C &#x3c;= r.e.c; ++C) {
@@ -2157,9 +2220,8 @@ As an alternative to the `writeFile` CSV type, `XLSX.utils.sheet_to_csv` also
 			switch(val.t){
 				case &#x27;z&#x27;: continue;
 				case &#x27;e&#x27;: continue;
-				case &#x27;s&#x27;: break;
-				case &#x27;b&#x27;: case &#x27;n&#x27;: break;
-				default: throw &#x27;unrecognized type &#x27; + val.t;
+				case &#x27;s&#x27;: case &#x27;d&#x27;: case &#x27;b&#x27;: case &#x27;n&#x27;: break;
+				default: throw new Error(&#x27;unrecognized type &#x27; + val.t);
 			}
 			if(v !== undefined) {
 				row[hdr[C]] = raw ? v : format_cell(val,v);
