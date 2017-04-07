@@ -1,0 +1,30 @@
+<svg height="430" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="430" fill="#555" width="720"></rect>
+<text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
+<tspan x="10" y="26">  0.  2017-04-07 17:22:35 +0000  5737560 bytes  .</tspan>
+<tspan x="10" y="42">  1.  2017-04-07 17:22:35 +0000     1444 bytes  CHANGELOG.md</tspan>
+<tspan x="10" y="58">  2.  2017-04-07 17:22:35 +0000    11356 bytes  LICENSE</tspan>
+<tspan x="10" y="74">  3.  2017-04-07 17:22:35 +0000    57676 bytes  README.md</tspan>
+<tspan x="10" y="90">  4.  2017-04-07 17:22:35 +0000     6497 bytes  bin/xlsx.njs</tspan>
+<tspan x="10" y="106">  5.  2017-04-07 17:22:35 +0000      308 bytes  bower.json</tspan>
+<tspan x="10" y="122">  6.  2017-04-07 17:22:35 +0000    11356 bytes  dist/LICENSE</tspan>
+<tspan x="10" y="138">  7.  2017-04-07 17:22:35 +0000   394876 bytes  dist/cpexcel.js</tspan>
+<tspan x="10" y="154">  8.  2017-04-07 17:22:35 +0000   287346 bytes  dist/jszip.js</tspan>
+<tspan x="10" y="170">  9.  2017-04-07 17:22:35 +0000   500528 bytes  dist/xlsx.core.min.js</tspan>
+<tspan x="10" y="186"> 10.  2017-04-07 17:22:35 +0000   571116 bytes  dist/xlsx.core.min.map</tspan>
+<tspan x="10" y="202"> 11.  2017-04-07 17:22:35 +0000   873419 bytes  dist/xlsx.full.min.js</tspan>
+<tspan x="10" y="218"> 12.  2017-04-07 17:22:35 +0000   676913 bytes  dist/xlsx.full.min.map</tspan>
+<tspan x="10" y="234"> 13.  2017-04-07 17:22:35 +0000   524414 bytes  dist/xlsx.js</tspan>
+<tspan x="10" y="250"> 14.  2017-04-07 17:22:35 +0000   389158 bytes  dist/xlsx.min.js</tspan>
+<tspan x="10" y="266"> 15.  2017-04-07 17:22:35 +0000   441122 bytes  dist/xlsx.min.map</tspan>
+<tspan x="10" y="282"> 16.  2017-04-07 17:22:35 +0000     1206 bytes  formats.dot</tspan>
+<tspan x="10" y="298"> 17.  2017-04-07 17:22:35 +0000   125832 bytes  formats.png</tspan>
+<tspan x="10" y="314"> 18.  2017-04-07 17:22:35 +0000   287346 bytes  jszip.js</tspan>
+<tspan x="10" y="330"> 19.  2017-04-07 17:22:35 +0000    46319 bytes  legend.png</tspan>
+<tspan x="10" y="346"> 20.  2017-04-07 17:22:35 +0000     2687 bytes  package.json</tspan>
+<tspan x="10" y="362"> 21.  2017-04-07 17:22:35 +0000   524414 bytes  xlsx.js</tspan>
+<tspan x="10" y="378"> 22.  2017-04-07 17:22:35 +0000      455 bytes  xlsxworker.js</tspan>
+<tspan x="10" y="394"> 23.  2017-04-07 17:22:35 +0000      885 bytes  xlsxworker1.js</tspan>
+<tspan x="10" y="410"> 24.  2017-04-07 17:22:35 +0000      887 bytes  xlsxworker2.js</tspan>
+</text>
+</svg>

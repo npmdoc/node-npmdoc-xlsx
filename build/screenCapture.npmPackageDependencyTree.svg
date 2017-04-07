@@ -1,0 +1,36 @@
+<svg height="526" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="526" fill="#555" width="720"></rect>
+<text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
+<tspan x="10" y="26">11 megabytes installed</tspan>
+<tspan x="10" y="42"></tspan>
+<tspan x="10" y="58">node_modules</tspan>
+<tspan x="10" y="74">└─┬ xlsx@0.9.9 </tspan>
+<tspan x="10" y="90">  ├─┬ adler-32@1.0.0 </tspan>
+<tspan x="10" y="106">  │ ├─┬ concat-stream@1.6.0 </tspan>
+<tspan x="10" y="122">  │ │ ├── inherits@2.0.3 </tspan>
+<tspan x="10" y="138">  │ │ ├─┬ readable-stream@2.2.8 </tspan>
+<tspan x="10" y="154">  │ │ │ ├── buffer-shims@1.0.0 </tspan>
+<tspan x="10" y="170">  │ │ │ ├── core-util-is@1.0.2 </tspan>
+<tspan x="10" y="186">  │ │ │ ├── isarray@1.0.0 </tspan>
+<tspan x="10" y="202">  │ │ │ ├── process-nextick-args@1.0.7 </tspan>
+<tspan x="10" y="218">  │ │ │ ├── string_decoder@1.0.0 </tspan>
+<tspan x="10" y="234">  │ │ │ └── util-deprecate@1.0.2 </tspan>
+<tspan x="10" y="250">  │ │ └── typedarray@0.0.6 </tspan>
+<tspan x="10" y="266">  │ ├── exit-on-epipe@1.0.0 </tspan>
+<tspan x="10" y="282">  │ └── printj@1.0.0 </tspan>
+<tspan x="10" y="298">  ├─┬ cfb@0.11.1 </tspan>
+<tspan x="10" y="314">  │ └── commander@2.9.0 </tspan>
+<tspan x="10" y="330">  ├─┬ codepage@1.8.1 </tspan>
+<tspan x="10" y="346">  │ ├── commander@2.9.0 </tspan>
+<tspan x="10" y="362">  │ ├── exit-on-epipe@1.0.0 </tspan>
+<tspan x="10" y="378">  │ └── voc@0.5.0 </tspan>
+<tspan x="10" y="394">  ├─┬ commander@2.9.0 </tspan>
+<tspan x="10" y="410">  │ └── graceful-readlink@1.0.1 </tspan>
+<tspan x="10" y="426">  ├─┬ crc-32@1.0.1 </tspan>
+<tspan x="10" y="442">  │ └── exit-on-epipe@1.0.0 </tspan>
+<tspan x="10" y="458">  ├── exit-on-epipe@1.0.0 </tspan>
+<tspan x="10" y="474">  └─┬ ssf@0.9.0 </tspan>
+<tspan x="10" y="490">    ├── colors@0.6.2 </tspan>
+<tspan x="10" y="506">    └── frac@0.3.1</tspan>
+</text>
+</svg>
