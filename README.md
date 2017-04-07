@@ -1,11 +1,13 @@
-# api documentation for  [xlsx (v0.9.5)](https://oss.sheetjs.com/js-xlsx/)  [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-xlsx.svg)](https://travis-ci.org/npmdoc/node-npmdoc-xlsx)
+# api documentation for  [xlsx (v0.9.9)](https://oss.sheetjs.com/js-xlsx/)  [![npm package](https://img.shields.io/npm/v/npmdoc-xlsx.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-xlsx) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-xlsx.svg)](https://travis-ci.org/npmdoc/node-npmdoc-xlsx)
 #### Excel (XLSB/XLSX/XLSM/XLS/XML) and ODS (ODS/FODS/UOS) spreadsheet parser and writer
 
 [![NPM](https://nodei.co/npm/xlsx.png?downloads=true)](https://www.npmjs.com/package/xlsx)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-xlsx/build/screen-capture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-xlsx_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-xlsx/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-xlsx/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-xlsx_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-xlsx/build/apidoc.html)
 
-![package-listing](https://npmdoc.github.io/node-npmdoc-xlsx/build/screen-capture.npmPackageListing.svg)
+![npmPackageListing](https://npmdoc.github.io/node-npmdoc-xlsx/build/screenCapture.npmPackageListing.svg)
+
+![npmPackageDependencyTree](https://npmdoc.github.io/node-npmdoc-xlsx/build/screenCapture.npmPackageDependencyTree.svg)
 
 
 
@@ -35,8 +37,8 @@
     },
     "dependencies": {
         "adler-32": "~1.0.0",
-        "cfb": "~0.11.0",
-        "codepage": "~1.7.0",
+        "cfb": "~0.11.1",
+        "codepage": "~1.8.0",
         "commander": "~2.9.0",
         "crc-32": "~1.0.0",
         "exit-on-epipe": "~1.0.0",
@@ -50,13 +52,13 @@
     },
     "directories": {},
     "dist": {
-        "shasum": "dc1089e5759de44d450dbbf8e2d6e68a12f64d90",
-        "tarball": "https://registry.npmjs.org/xlsx/-/xlsx-0.9.5.tgz"
+        "shasum": "85a628139f0dd9c9bc36c5cc42cb27cdd831dfa4",
+        "tarball": "https://registry.npmjs.org/xlsx/-/xlsx-0.9.9.tgz"
     },
     "engines": {
         "node": ">=0.8"
     },
-    "gitHead": "69782ca211c80de773cecaba96de901a7dbe3848",
+    "gitHead": "01d1c32fa13a857c2fa23d89baa069c3aad51788",
     "homepage": "https://oss.sheetjs.com/js-xlsx/",
     "keywords": [
         "excel",
@@ -87,7 +89,7 @@
         "pretest": "git submodule init && git submodule update",
         "test": "make travis"
     },
-    "version": "0.9.5"
+    "version": "0.9.9"
 }
 ```
 
@@ -96,6 +98,7 @@
 # <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
 
 #### [module xlsx](#apidoc.module.xlsx)
+1.  [function <span class="apidocSignatureSpan">xlsx.</span>jszip (data, options)](#apidoc.element.xlsx.jszip)
 1.  [function <span class="apidocSignatureSpan">xlsx.</span>parse_fods (data, opts)](#apidoc.element.xlsx.parse_fods)
 1.  [function <span class="apidocSignatureSpan">xlsx.</span>parse_ods (zip, opts)](#apidoc.element.xlsx.parse_ods)
 1.  [function <span class="apidocSignatureSpan">xlsx.</span>parse_xlscfb (cfb, options)](#apidoc.element.xlsx.parse_xlscfb)
@@ -105,11 +108,13 @@
 1.  [function <span class="apidocSignatureSpan">xlsx.</span>readFileSync (filename, opts)](#apidoc.element.xlsx.readFileSync)
 1.  [function <span class="apidocSignatureSpan">xlsx.</span>write (wb, opts)](#apidoc.element.xlsx.write)
 1.  [function <span class="apidocSignatureSpan">xlsx.</span>writeFile (wb, filename, opts)](#apidoc.element.xlsx.writeFile)
+1.  [function <span class="apidocSignatureSpan">xlsx.</span>writeFileAsync (filename, wb, opts, cb)](#apidoc.element.xlsx.writeFileAsync)
 1.  [function <span class="apidocSignatureSpan">xlsx.</span>writeFileSync (wb, filename, opts)](#apidoc.element.xlsx.writeFileSync)
 1.  [function <span class="apidocSignatureSpan">xlsx.</span>write_ods (wb, opts)](#apidoc.element.xlsx.write_ods)
 1.  object <span class="apidocSignatureSpan">xlsx.</span>CFB
 1.  object <span class="apidocSignatureSpan">xlsx.</span>CFB.utils
 1.  object <span class="apidocSignatureSpan">xlsx.</span>SSF
+1.  object <span class="apidocSignatureSpan">xlsx.</span>jszip.prototype
 1.  object <span class="apidocSignatureSpan">xlsx.</span>utils
 1.  string <span class="apidocSignatureSpan">xlsx.</span>version
 
@@ -142,7 +147,27 @@
 1.  object <span class="apidocSignatureSpan">xlsx.SSF.</span>opts
 1.  string <span class="apidocSignatureSpan">xlsx.SSF.</span>version
 
+#### [module xlsx.jszip](#apidoc.module.xlsx.jszip)
+1.  [function <span class="apidocSignatureSpan">xlsx.</span>jszip (data, options)](#apidoc.element.xlsx.jszip.jszip)
+1.  object <span class="apidocSignatureSpan">xlsx.jszip.</span>base64
+1.  object <span class="apidocSignatureSpan">xlsx.jszip.</span>compressions
+1.  object <span class="apidocSignatureSpan">xlsx.jszip.</span>defaults
+1.  object <span class="apidocSignatureSpan">xlsx.jszip.</span>support
+1.  object <span class="apidocSignatureSpan">xlsx.jszip.</span>utils
+
+#### [module xlsx.jszip.prototype](#apidoc.module.xlsx.jszip.prototype)
+1.  [function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>crc32 (input, crc)](#apidoc.element.xlsx.jszip.prototype.crc32)
+1.  [function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>file (name, data, o)](#apidoc.element.xlsx.jszip.prototype.file)
+1.  [function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>filter (search)](#apidoc.element.xlsx.jszip.prototype.filter)
+1.  [function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>folder (arg)](#apidoc.element.xlsx.jszip.prototype.folder)
+1.  [function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>generate (options)](#apidoc.element.xlsx.jszip.prototype.generate)
+1.  [function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>load (data, options)](#apidoc.element.xlsx.jszip.prototype.load)
+1.  [function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>remove (name)](#apidoc.element.xlsx.jszip.prototype.remove)
+1.  [function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>utf8decode (input)](#apidoc.element.xlsx.jszip.prototype.utf8decode)
+1.  [function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>utf8encode (string)](#apidoc.element.xlsx.jszip.prototype.utf8encode)
+
 #### [module xlsx.utils](#apidoc.module.xlsx.utils)
+1.  [function <span class="apidocSignatureSpan">xlsx.utils.</span>aoa_to_sheet (data, opts)](#apidoc.element.xlsx.utils.aoa_to_sheet)
 1.  [function <span class="apidocSignatureSpan">xlsx.utils.</span>decode_cell (cstr)](#apidoc.element.xlsx.utils.decode_cell)
 1.  [function <span class="apidocSignatureSpan">xlsx.utils.</span>decode_col (colstr)](#apidoc.element.xlsx.utils.decode_col)
 1.  [function <span class="apidocSignatureSpan">xlsx.utils.</span>decode_range (range)](#apidoc.element.xlsx.utils.decode_range)
@@ -161,10 +186,49 @@
 1.  [function <span class="apidocSignatureSpan">xlsx.utils.</span>sheet_to_json (sheet, opts)](#apidoc.element.xlsx.utils.sheet_to_json)
 1.  [function <span class="apidocSignatureSpan">xlsx.utils.</span>sheet_to_row_object_array (sheet, opts)](#apidoc.element.xlsx.utils.sheet_to_row_object_array)
 1.  [function <span class="apidocSignatureSpan">xlsx.utils.</span>split_cell (cstr)](#apidoc.element.xlsx.utils.split_cell)
+1.  [function <span class="apidocSignatureSpan">xlsx.utils.</span>table_to_book (table, opts)](#apidoc.element.xlsx.utils.table_to_book)
+1.  [function <span class="apidocSignatureSpan">xlsx.utils.</span>table_to_sheet (table, opts)](#apidoc.element.xlsx.utils.table_to_sheet)
 
 
 
 # <a name="apidoc.module.xlsx"></a>[module xlsx](#apidoc.module.xlsx)
+
+#### <a name="apidoc.element.xlsx.jszip"></a>[function <span class="apidocSignatureSpan">xlsx.</span>jszip (data, options)](#apidoc.element.xlsx.jszip)
+- description and source-code
+```javascript
+function JSZip(data, options) {
+    // if this constructor is used without 'new', it adds 'new' before itself:
+    if(!(this instanceof JSZip)) return new JSZip(data, options);
+
+    // object containing the files :
+    // {
+    //   "folder/" : {...},
+    //   "folder/data.txt" : {...}
+    // }
+    this.files = {};
+
+    this.comment = null;
+
+    // Where we are in the hierarchy
+    this.root = "";
+    if (data) {
+        this.load(data, options);
+    }
+    this.clone = function() {
+        var newObj = new JSZip();
+        for (var i in this) {
+            if (typeof this[i] !== "function") {
+                newObj[i] = this[i];
+            }
+        }
+        return newObj;
+    };
+}
+```
+- example usage
+```shell
+n/a
+```
 
 #### <a name="apidoc.element.xlsx.parse_fods"></a>[function <span class="apidocSignatureSpan">xlsx.</span>parse_fods (data, opts)](#apidoc.element.xlsx.parse_fods)
 - description and source-code
@@ -304,8 +368,8 @@ function parse_zip(zip, opts) {
 
 	var out = ({});
 	if(opts.bookSheets || opts.bookProps) {
-		if(props.Worksheets && props.SheetNames.length > 0) sheets=props.SheetNames;
-		else if(wb.Sheets) sheets = wb.Sheets.map(function pluck(x){ return x.name; });
+		if(wb.Sheets) sheets = wb.Sheets.map(function pluck(x){ return x.name; });
+		else if(props.Worksheets && props.SheetNames.length > 0) sheets=props.SheetNames;
 		if(opts.bookProps) { out.Props = props; out.Custprops = custprops; }
 		if(opts.bookSheets && typeof sheets !== 'undefined') out.SheetNames = sheets;
 		if(opts.bookSheets ? out.SheetNames : opts.bookProps) return out;
@@ -318,14 +382,15 @@ function parse_zip(zip, opts) {
 	var i=0;
 	var sheetRels = ({});
 	var path, relsPath;
-	if(!props.Worksheets) {
+
+	//if(!props.Worksheets) {
 		var wbsheets = wb.Sheets;
 		props.Worksheets = wbsheets.length;
 		props.SheetNames = [];
 		for(var j = 0; j != wbsheets.length; ++j) {
 			props.SheetNames[j] = wbsheets[j].name;
 		}
-	}
+	//}
 
 	var wbext = xlsb ? "bin" : "xml";
 	var wbrelsfile = 'xl/_rels/workbook.' + wbext + '.rels';
@@ -334,13 +399,16 @@ function parse_zip(zip, opts) {
 	/* Numbers iOS hack */
 	var nmode = (getzipdata(zip,"xl/worksheets/sheet.xml",true))?1:0;
 	for(i = 0; i != props.Worksheets; ++i) {
-		if(wbrels && wbrels[i]) path = 'xl/' + (wbrels[i][1]).replace(/[\/]?xl\//, "");
-		else {
+		var stype = "sheet";
+		if(wbrels && wbrels[i]) {
+			path = 'xl/' + (wbrels[i][1]).replace(/[\/]?xl\//, "");
+			stype = wbrels[i][2];
+		} else {
 			path = 'xl/worksheets/sheet'+(i+1-nmode)+"." + wbext;
 			path = path.replace(/sheet0\./,"sheet.");
 		}
 		relsPath = path.replace(/^(.*)(\/)([^\/]*)$/, "$1/_rels/$3.rels");
-		safe_parse_ws(zip, path, relsPath, props.SheetNames[i], sheetRels, sheets, opts, wb, themes, styles);
+		safe_parse_sheet(zip, path, relsPath, props.SheetNames[i], sheetRels, sheets, stype, opts, wb, themes, styles);
 	}
 
 	if(dir.comments) parse_comments(zip, dir.comments, sheets, sheetRels, opts);
@@ -363,7 +431,7 @@ function parse_zip(zip, opts) {
 		out.files = zip.files;
 	}
 	if(opts.bookVBA) {
-		if(dir.vba.length > 0) out.vbaraw = getzipdata(zip,dir.vba[0].replace(/^ ...
+		if ...
 ```
 - example usage
 ```shell
@@ -382,11 +450,16 @@ function readSync(data, opts) {
 		case 0xD0: return parse_xlscfb(CFB.read(d, o), o);
 		case 0x09: return parse_xlscfb(s2a(o.type === 'base64' ? Base64.decode(d) : d), o);
 		case 0x3C: return parse_xlml(d, o);
+		case 0x49: if(n[1] == 0x44) return SYLK.to_workbook(d, o); break;
+		case 0x54: if(n[1] == 0x41 && n[2] == 0x42 && n[3] == 0x4C) return DIF.to_workbook(d, o); break;
 		case 0x50: if(n[1] == 0x4B && n[2] < 0x20 && n[3] < 0x20) return read_zip(d, o); break;
 		case 0xEF: return parse_xlml(d, o);
-		default: throw new Error("Unsupported file " + n.join("|"));
+		case 0xFF: if(n[1] == 0xFE){ return read_utf16(d, o); } break;
+		case 0x03: case 0x83: case 0x8B: return DBF.to_workbook(d, o);
 	}
-	throw new Error("Unsupported file format " + n.join("|"));
+	if(n[2] <= 12 && n[3] <= 31) return DBF.to_workbook(d, o);
+	if(0x20>n[0]||n[0]>0x7F) throw new Error("Unsupported file " + n.join("|"));
+	return PRN.to_workbook(d, o);
 }
 ```
 - example usage
@@ -431,10 +504,10 @@ var workbook = XLSX.readFile('test.xlsx');
 /* DO SOMETHING WITH workbook HERE */
 '''
 
-- ajax (for a more complete example that works in older browsers, check the demo
-  at <http://oss.sheetjs.com/js-xlsx/ajax.html>):
+- Browser DOM Table element:
 
 '''js
+var worksheet = XLSX.utils.table_to_book(document.getElementById('tableau'));
 ...
 ```
 
@@ -457,10 +530,15 @@ n/a
 function writeSync(wb, opts) {
 	check_wb(wb);
 	var o = opts||{};
-	switch(o.bookType || 'xlsx') {
+	switch(o.bookType || 'xlsb') {
 		case 'xml':
 		case 'xlml': return write_string_type(write_xlml(wb, o), o);
+		case 'slk':
+		case 'sylk': return write_string_type(write_slk_str(wb, o), o);
+		case 'txt': return write_bstr_type(write_txt_str(wb, o), o);
 		case 'csv': return write_string_type(write_csv_str(wb, o), o);
+		case 'dif': return write_string_type(write_dif_str(wb, o), o);
+		case 'prn': return write_string_type(write_prn_str(wb, o), o);
 		case 'fods': return write_string_type(write_ods(wb, o), o);
 		case 'biff2': return write_binary_type(write_biff_buf(wb, o), o);
 		case 'xlsx':
@@ -498,18 +576,7 @@ function s2ab(s) {
 function writeFileSync(wb, filename, opts) {
 	var o = opts||{}; o.type = 'file';
 	o.file = filename;
-	if(!o.bookType) switch(o.file.slice(-5).toLowerCase()) {
-		case '.xlsx': o.bookType = 'xlsx'; break;
-		case '.xlsm': o.bookType = 'xlsm'; break;
-		case '.xlsb': o.bookType = 'xlsb'; break;
-		case '.fods': o.bookType = 'fods'; break;
-		case '.xlml': o.bookType = 'xlml'; break;
-	default: switch(o.file.slice(-4).toLowerCase()) {
-		case '.xls': o.bookType = 'biff2'; break;
-		case '.xml': o.bookType = 'xml'; break;
-		case '.ods': o.bookType = 'ods'; break;
-		case '.csv': o.bookType = 'csv'; break;
-	}}
+	resolve_book_type(o);
 	return writeSync(wb, o);
 }
 ```
@@ -534,24 +601,46 @@ XLSX.writeFile(workbook, 'out.xlsx');
 ...
 ```
 
+#### <a name="apidoc.element.xlsx.writeFileAsync"></a>[function <span class="apidocSignatureSpan">xlsx.</span>writeFileAsync (filename, wb, opts, cb)](#apidoc.element.xlsx.writeFileAsync)
+- description and source-code
+```javascript
+function writeFileAsync(filename, wb, opts, cb) {
+	var o = opts||{}; o.type = 'file';
+	o.file = filename;
+	resolve_book_type(o);
+	o.type = 'buffer';
+	var _cb = cb; if(!(_cb instanceof Function)) _cb = (opts);
+	return _fs.writeFile(filename, writeSync(wb, o), _cb);
+}
+```
+- example usage
+```shell
+...
+
+### Writing functions
+
+'XLSX.write(wb, write_opts)' attempts to write the workbook 'wb'
+
+'XLSX.writeFile(wb, filename, write_opts)' attempts to write 'wb' to 'filename'
+
+'XLSX.writeFileAsync(filename, wb, o, cb)' attempts to write 'wb' to 'filename'.
+If 'o' is omitted, the writer will use the third argument as the callback.
+
+Write options are described in the [Writing Options](#writing-options) section.
+
+### Utilities
+
+Utilities are available in the 'XLSX.utils' object:
+...
+```
+
 #### <a name="apidoc.element.xlsx.writeFileSync"></a>[function <span class="apidocSignatureSpan">xlsx.</span>writeFileSync (wb, filename, opts)](#apidoc.element.xlsx.writeFileSync)
 - description and source-code
 ```javascript
 function writeFileSync(wb, filename, opts) {
 	var o = opts||{}; o.type = 'file';
 	o.file = filename;
-	if(!o.bookType) switch(o.file.slice(-5).toLowerCase()) {
-		case '.xlsx': o.bookType = 'xlsx'; break;
-		case '.xlsm': o.bookType = 'xlsm'; break;
-		case '.xlsb': o.bookType = 'xlsb'; break;
-		case '.fods': o.bookType = 'fods'; break;
-		case '.xlml': o.bookType = 'xlml'; break;
-	default: switch(o.file.slice(-4).toLowerCase()) {
-		case '.xls': o.bookType = 'biff2'; break;
-		case '.xml': o.bookType = 'xml'; break;
-		case '.ods': o.bookType = 'ods'; break;
-		case '.csv': o.bookType = 'csv'; break;
-	}}
+	resolve_book_type(o);
 	return writeSync(wb, o);
 }
 ```
@@ -626,7 +715,7 @@ var mv = check_get_mver(blob);
 mver = mv[0];
 switch(mver) {
 	case 3: ssz = 512; break; case 4: ssz = 4096; break;
-	default: throw "Major Version: Expected 3 or 4 saw " + mver;
+	default: throw new Error("Major Version: Expected 3 or 4 saw " + mver);
 }
 
 /* reprocess header */
@@ -638,7 +727,7 @@ check_shifts(blob, mver);
 
 // Number of Directory Sectors
 var nds = blob.read_shift(4, 'i');
-if(mver === 3 && nds !== 0) throw '# Directory Sectors: Expected 0 saw ' + nds;
+if(mver === 3 && nds !== 0) throw new Error('# Directory Sectors: Expected 0 saw ' + nds);
 
 // Number of FAT Sectors
 //var nfs = blob.read_shift(4, 'i');
@@ -791,7 +880,7 @@ function ReadShift(size, t) {
 		case 'cstr': size = 0; o = "";
 			while((w=__readUInt8(this, this.l + size++))!==0) oo.push(_getchar(w));
 			o = oo.join(""); break;
-		case 'wstr': size = 0; o = "";
+		case '_wstr': size = 0; o = "";
 			while((w=__readUInt16LE(this,this.l +size))!==0){oo.push(_getchar(w));size+=2;}
 			size+=2; o = oo.join(""); break;
 
@@ -1126,7 +1215,23 @@ function load_entry(fmt, idx) { table_fmt[idx] = fmt; }
 ```
 - example usage
 ```shell
-n/a
+...
+this.files = {};
+
+this.comment = null;
+
+// Where we are in the hierarchy
+this.root = "";
+if (data) {
+    this.load(data, options);
+}
+this.clone = function() {
+    var newObj = new JSZip();
+    for (var i in this) {
+        if (typeof this[i] !== "function") {
+            newObj[i] = this[i];
+        }
+...
 ```
 
 #### <a name="apidoc.element.xlsx.SSF.load_table"></a>[function <span class="apidocSignatureSpan">xlsx.SSF.</span>load_table (tbl)](#apidoc.element.xlsx.SSF.load_table)
@@ -1181,7 +1286,546 @@ n/a
 
 
 
+# <a name="apidoc.module.xlsx.jszip"></a>[module xlsx.jszip](#apidoc.module.xlsx.jszip)
+
+#### <a name="apidoc.element.xlsx.jszip.jszip"></a>[function <span class="apidocSignatureSpan">xlsx.</span>jszip (data, options)](#apidoc.element.xlsx.jszip.jszip)
+- description and source-code
+```javascript
+function JSZip(data, options) {
+    // if this constructor is used without 'new', it adds 'new' before itself:
+    if(!(this instanceof JSZip)) return new JSZip(data, options);
+
+    // object containing the files :
+    // {
+    //   "folder/" : {...},
+    //   "folder/data.txt" : {...}
+    // }
+    this.files = {};
+
+    this.comment = null;
+
+    // Where we are in the hierarchy
+    this.root = "";
+    if (data) {
+        this.load(data, options);
+    }
+    this.clone = function() {
+        var newObj = new JSZip();
+        for (var i in this) {
+            if (typeof this[i] !== "function") {
+                newObj[i] = this[i];
+            }
+        }
+        return newObj;
+    };
+}
+```
+- example usage
+```shell
+n/a
+```
+
+
+
+# <a name="apidoc.module.xlsx.jszip.prototype"></a>[module xlsx.jszip.prototype](#apidoc.module.xlsx.jszip.prototype)
+
+#### <a name="apidoc.element.xlsx.jszip.prototype.crc32"></a>[function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>crc32 (input, crc)](#apidoc.element.xlsx.jszip.prototype.crc32)
+- description and source-code
+```javascript
+crc32 = function (input, crc) {
+    return crc32(input, crc);
+}
+```
+- example usage
+```shell
+...
+
+    if(useUTF8ForComment) {
+
+unicodeCommentExtraField =
+    // Version
+    decToHex(1, 1) +
+    // CommentCRC32
+    decToHex(this.crc32(utfEncodedComment), 4) +
+    // UnicodeName
+    utfEncodedComment;
+
+extraFields +=
+    // Info-ZIP Unicode Path Extra Field
+    "\x75\x63" +
+    // size
+...
+```
+
+#### <a name="apidoc.element.xlsx.jszip.prototype.file"></a>[function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>file (name, data, o)](#apidoc.element.xlsx.jszip.prototype.file)
+- description and source-code
+```javascript
+file = function (name, data, o) {
+    if (arguments.length === 1) {
+        if (utils.isRegExp(name)) {
+            var regexp = name;
+            return this.filter(function(relativePath, file) {
+                return !file.dir && regexp.test(relativePath);
+            });
+        }
+        else { // text
+            return this.filter(function(relativePath, file) {
+                return !file.dir && relativePath === name;
+            })[0] || null;
+        }
+    }
+    else { // more than one argument : we have data !
+        name = this.root + name;
+        fileAdd.call(this, name, data, o);
+    }
+    return this;
+}
+```
+- example usage
+```shell
+...
+'use strict';
+
+var base64 = _dereq_('./base64');
+
+/**
+Usage:
+   zip = new JSZip();
+   zip.file("hello.txt", "Hello, World!").file("tempfile", "nothing");
+   zip.folder("images").file("smile.gif", base64Data, {base64: true});
+   zip.file("Xmas.txt", "Ho ho ho !", {date : new Date("December 25, 2007 00:00:01")});
+   zip.remove("tempfile");
+
+   base64zip = zip.generate();
+
+**/
+...
+```
+
+#### <a name="apidoc.element.xlsx.jszip.prototype.filter"></a>[function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>filter (search)](#apidoc.element.xlsx.jszip.prototype.filter)
+- description and source-code
+```javascript
+filter = function (search) {
+    var result = [],
+        filename, relativePath, file, fileClone;
+    for (filename in this.files) {
+        if (!this.files.hasOwnProperty(filename)) {
+            continue;
+        }
+        file = this.files[filename];
+        // return a new object, don't let the user mess with our internal objects :)
+        fileClone = new ZipObject(file.name, file._data, extend(file.options));
+        relativePath = filename.slice(this.root.length, filename.length);
+        if (filename.slice(0, this.root.length) === this.root && // the file is in the current root
+        search(relativePath, fileClone)) { // and the file matches the function
+            result.push(fileClone);
+        }
+    }
+    return result;
+}
+```
+- example usage
+```shell
+...
+'XLSX.utils.sheet_to_formulae' generates an array of commands that represent
+how a person would enter data into an application.  Each entry is of the form
+'A1-cell-address=formula-or-value'.  String literals are prefixed with a ''' in
+accordance with Excel.  For the example sheet:
+
+'''js
+> var o = XLSX.utils.sheet_to_formulae(ws);
+> o.filter(function(v, i) { return i % 5 === 0; });
+[ 'A1=\'S', 'F1=\'J', 'D2=4', 'B3=3', 'G3=8' ]
+'''
+
+### Delimiter-Separated Output
+
+As an alternative to the 'writeFile' CSV type, 'XLSX.utils.sheet_to_csv' also
+produces CSV output.  The function takes an options argument:
+...
+```
+
+#### <a name="apidoc.element.xlsx.jszip.prototype.folder"></a>[function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>folder (arg)](#apidoc.element.xlsx.jszip.prototype.folder)
+- description and source-code
+```javascript
+folder = function (arg) {
+    if (!arg) {
+        return this;
+    }
+
+    if (utils.isRegExp(arg)) {
+        return this.filter(function(relativePath, file) {
+            return file.dir && arg.test(relativePath);
+        });
+    }
+
+    // else, name is a new folder
+    var name = this.root + arg;
+    var newFolder = folderAdd.call(this, name);
+
+    // Allow chaining by returning a new object with this folder as the root
+    var ret = this.clone();
+    ret.root = newFolder.name;
+    return ret;
+}
+```
+- example usage
+```shell
+...
+
+var base64 = _dereq_('./base64');
+
+/**
+Usage:
+   zip = new JSZip();
+   zip.file("hello.txt", "Hello, World!").file("tempfile", "nothing");
+   zip.folder("images").file("smile.gif", base64Data, {base64: true});
+   zip.file("Xmas.txt", "Ho ho ho !", {date : new Date("December 25, 2007 00:00:01")});
+   zip.remove("tempfile");
+
+   base64zip = zip.generate();
+
+**/
+...
+```
+
+#### <a name="apidoc.element.xlsx.jszip.prototype.generate"></a>[function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>generate (options)](#apidoc.element.xlsx.jszip.prototype.generate)
+- description and source-code
+```javascript
+generate = function (options) {
+    options = extend(options || {}, {
+        base64: true,
+        compression: "STORE",
+        type: "base64",
+        comment: null
+    });
+
+    utils.checkSupport(options.type);
+
+    var zipData = [],
+        localDirLength = 0,
+        centralDirLength = 0,
+        writer, i,
+        utfEncodedComment = utils.transformTo("string", this.utf8encode(options.comment || this.comment || ""));
+
+    // first, generate all the zip parts.
+    for (var name in this.files) {
+        if (!this.files.hasOwnProperty(name)) {
+            continue;
+        }
+        var file = this.files[name];
+
+        var compressionName = file.options.compression || options.compression.toUpperCase();
+        var compression = compressions[compressionName];
+        if (!compression) {
+            throw new Error(compressionName + " is not a valid compression method !");
+        }
+
+        var compressedObject = generateCompressedObjectFrom.call(this, file, compression);
+
+        var zipPart = generateZipParts.call(this, name, file, compressedObject, localDirLength);
+        localDirLength += zipPart.fileRecord.length + compressedObject.compressedSize;
+        centralDirLength += zipPart.dirRecord.length;
+        zipData.push(zipPart);
+    }
+
+    var dirEnd = "";
+
+    // end of central dir signature
+    dirEnd = signature.CENTRAL_DIRECTORY_END +
+    // number of this disk
+    "\x00\x00" +
+    // number of the disk with the start of the central directory
+    "\x00\x00" +
+    // total number of entries in the central directory on this disk
+    decToHex(zipData.length, 2) +
+    // total number of entries in the central directory
+    decToHex(zipData.length, 2) +
+    // size of the central directory   4 bytes
+    decToHex(centralDirLength, 4) +
+    // offset of start of central directory with respect to the starting disk number
+    decToHex(localDirLength, 4) +
+    // .ZIP file comment length
+    decToHex(utfEncodedComment.length, 2) +
+    // .ZIP file comment
+    utfEncodedComment;
+
+
+    // we have all the parts (and the total length)
+    // time to create a writer !
+    var typeName = options.type.toLowerCase();
+    if(typeName==="uint8array"||typeName==="arraybuffer"||typeName==="blob"||typeName==="nodebuffer") {
+        writer = new Uint8ArrayWriter(localDirLength + centralDirLength + dirEnd.length);
+    }else{
+        writer = new StringWriter(localDirLength + centralDirLength + dirEnd.length);
+    }
+
+    for (i = 0; i < zipData.length; i++) {
+        writer.append(zipData[i].fileRecord);
+        writer.append(zipData[i].compressedObject.compressedContent);
+    }
+    for (i = 0; i < zipData.length; i++) {
+        writer.append(zipData[i].dirRecord);
+    }
+
+    writer.append(dirEnd);
+
+    var zip = writer.finalize();
+
+
+
+    switch(options.type.toLowerCase()) {
+        // case "zip is an Uint8Array"
+        case "uint8array" :
+        case "arraybuffer" :
+        case "nodebuffer" :
+           return utils.transformTo(options.type.toLowerCase(), zip);
+        case "blob" :
+           return utils.arrayBuffer2Blob(utils.transformTo("arraybuffer", zip));
+        // case "zip is a string"
+        case "base64" :
+           return (options.base64) ? base64.encode(zip) : zip;
+        default : // case "string" :
+           return zip;
+     }
+
+}
+```
+- example usage
+```shell
+...
+Usage:
+  zip = new JSZip();
+  zip.file("hello.txt", "Hello, World!").file("tempfile", "nothing");
+  zip.folder("images").file("smile.gif", base64Data, {base64: true});
+  zip.file("Xmas.txt", "Ho ho ho !", {date : new Date("December 25, 2007 00:00:01")});
+  zip.remove("tempfile");
+
+  base64zip = zip.generate();
+
+**/
+
+/**
+* Representation a of zip file in js
+* @constructor
+* @param {String=|ArrayBuffer=|Uint8Array=} data the data to load, if any (optional).
+...
+```
+
+#### <a name="apidoc.element.xlsx.jszip.prototype.load"></a>[function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>load (data, options)](#apidoc.element.xlsx.jszip.prototype.load)
+- description and source-code
+```javascript
+load = function (data, options) {
+    var files, zipEntries, i, input;
+    options = options || {};
+    if (options.base64) {
+        data = base64.decode(data);
+    }
+
+    zipEntries = new ZipEntries(data, options);
+    files = zipEntries.files;
+    for (i = 0; i < files.length; i++) {
+        input = files[i];
+        this.file(input.fileName, input.decompressed, {
+            binary: true,
+            optimizedBinaryString: true,
+            date: input.date,
+            dir: input.dir,
+            comment : input.fileComment.length ? input.fileComment : null,
+            createFolders: options.createFolders
+        });
+    }
+    if (zipEntries.zipComment.length) {
+        this.comment = zipEntries.zipComment;
+    }
+
+    return this;
+}
+```
+- example usage
+```shell
+...
+this.files = {};
+
+this.comment = null;
+
+// Where we are in the hierarchy
+this.root = "";
+if (data) {
+    this.load(data, options);
+}
+this.clone = function() {
+    var newObj = new JSZip();
+    for (var i in this) {
+        if (typeof this[i] !== "function") {
+            newObj[i] = this[i];
+        }
+...
+```
+
+#### <a name="apidoc.element.xlsx.jszip.prototype.remove"></a>[function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>remove (name)](#apidoc.element.xlsx.jszip.prototype.remove)
+- description and source-code
+```javascript
+remove = function (name) {
+    name = this.root + name;
+    var file = this.files[name];
+    if (!file) {
+        // Look for any folders
+        if (name.slice(-1) != "/") {
+            name += "/";
+        }
+        file = this.files[name];
+    }
+
+    if (file && !file.dir) {
+        // file
+        delete this.files[name];
+    } else {
+        // maybe a folder, delete recursively
+        var kids = this.filter(function(relativePath, file) {
+            return file.name.slice(0, name.length) === name;
+        });
+        for (var i = 0; i < kids.length; i++) {
+            delete this.files[kids[i].name];
+        }
+    }
+
+    return this;
+}
+```
+- example usage
+```shell
+...
+
+/**
+Usage:
+  zip = new JSZip();
+  zip.file("hello.txt", "Hello, World!").file("tempfile", "nothing");
+  zip.folder("images").file("smile.gif", base64Data, {base64: true});
+  zip.file("Xmas.txt", "Ho ho ho !", {date : new Date("December 25, 2007 00:00:01")});
+  zip.remove("tempfile");
+
+  base64zip = zip.generate();
+
+**/
+
+/**
+* Representation a of zip file in js
+...
+```
+
+#### <a name="apidoc.element.xlsx.jszip.prototype.utf8decode"></a>[function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>utf8decode (input)](#apidoc.element.xlsx.jszip.prototype.utf8decode)
+- description and source-code
+```javascript
+utf8decode = function (input) {
+    return utf8.utf8decode(input);
+}
+```
+- example usage
+```shell
+...
+// if the data is a base64 string, we decode it before checking the encoding !
+if (this.options.base64) {
+    result = base64.decode(result);
+}
+if (asUTF8 && this.options.binary) {
+    // JSZip.prototype.utf8decode supports arrays as input
+    // skip to array => string step, utf8decode will do it.
+    result = out.utf8decode(result);
+}
+else {
+    // no utf8 transformation, do the array => string step.
+    result = utils.transformTo("string", result);
+}
+
+if (!asUTF8 && !this.options.binary) {
+...
+```
+
+#### <a name="apidoc.element.xlsx.jszip.prototype.utf8encode"></a>[function <span class="apidocSignatureSpan">xlsx.jszip.prototype.</span>utf8encode (string)](#apidoc.element.xlsx.jszip.prototype.utf8encode)
+- description and source-code
+```javascript
+utf8encode = function (string) {
+    return utils.transformTo("string", utf8.utf8encode(string));
+}
+```
+- example usage
+```shell
+...
+   }
+   else {
+       // no utf8 transformation, do the array => string step.
+       result = utils.transformTo("string", result);
+   }
+
+   if (!asUTF8 && !this.options.binary) {
+       result = utils.transformTo("string", out.utf8encode(result));
+   }
+   return result;
+};
+/**
+* A simple object representing a file in the zip file.
+* @constructor
+* @param {string} name the name of the file
+...
+```
+
+
+
 # <a name="apidoc.module.xlsx.utils"></a>[module xlsx.utils](#apidoc.module.xlsx.utils)
+
+#### <a name="apidoc.element.xlsx.utils.aoa_to_sheet"></a>[function <span class="apidocSignatureSpan">xlsx.utils.</span>aoa_to_sheet (data, opts)](#apidoc.element.xlsx.utils.aoa_to_sheet)
+- description and source-code
+```javascript
+function aoa_to_sheet(data, opts) {
+	var o = opts || {};
+	var ws = ({});
+	var range = ({s: {c:10000000, r:10000000}, e: {c:0, r:0}});
+	for(var R = 0; R != data.length; ++R) {
+		for(var C = 0; C != data[R].length; ++C) {
+			if(typeof data[R][C] === 'undefined') continue;
+			var cell = ({v: data[R][C] });
+			if(range.s.r > R) range.s.r = R;
+			if(range.s.c > C) range.s.c = C;
+			if(range.e.r < R) range.e.r = R;
+			if(range.e.c < C) range.e.c = C;
+			var cell_ref = encode_cell(({c:C,r:R}));
+			if(cell.v === null) { if(!o.cellStubs) continue; cell.t = 'z'; }
+			else if(typeof cell.v === 'number') cell.t = 'n';
+			else if(typeof cell.v === 'boolean') cell.t = 'b';
+			else if(cell.v instanceof Date) {
+				cell.z = o.dateNF || SSF._table[14];
+				if(o.cellDates) { cell.t = 'd'; cell.w = SSF.format(cell.z, datenum(cell.v)); }
+				else { cell.t = 'n'; cell.v = datenum(cell.v); cell.w = SSF.format(cell.z, cell.v); }
+			}
+			else cell.t = 's';
+			ws[cell_ref] = cell;
+		}
+	}
+	if(range.s.c < 10000000) ws['!ref'] = encode_range(range);
+	return ws;
+}
+```
+- example usage
+```shell
+...
+| dateNF      |  fmt 14  | Use specified date format in string output          |
+| cellDates   |  false   | Store dates as type 'd' (default is 'n')            |
+| sheetStubs  |  false   | Create cell objects of type 'z' for 'null' values   |
+
+To generate the example sheet:
+
+'''js
+var ws = XLSX.utils.aoa_to_sheet([
+	"SheetJS".split(""),
+	[1,2,3,4,5,6,7],
+	[2,3,4,5,6,7,8]
+]);
+'''
+
+### HTML Table Input
+...
+```
 
 #### <a name="apidoc.element.xlsx.utils.decode_cell"></a>[function <span class="apidocSignatureSpan">xlsx.utils.</span>decode_cell (cstr)](#apidoc.element.xlsx.utils.decode_cell)
 - description and source-code
@@ -1279,8 +1923,8 @@ function format_cell(cell, v, o) {
 	if(cell == null || cell.t == null || cell.t == 'z') return "";
 	if(cell.w !== undefined) return cell.w;
 	if(cell.t == 'd' && !cell.z && o && o.dateNF) cell.z = o.dateNF;
-	if(v == undefined) return safe_format_cell(cell, cell.v);
-	return safe_format_cell(cell, v);
+	if(v == undefined) return safe_format_cell(cell, cell.v, o);
+	return safe_format_cell(cell, v, o);
 }
 ```
 - example usage
@@ -1341,27 +1985,31 @@ function sheet_to_csv(sheet, opts) {
 	var r = safe_decode_range(sheet["!ref"]);
 	var FS = o.FS !== undefined ? o.FS : ",", fs = FS.charCodeAt(0);
 	var RS = o.RS !== undefined ? o.RS : "\n", rs = RS.charCodeAt(0);
-	var endregex = new RegExp(FS+"+$");
+	var endregex = new RegExp((FS=="|" ? "\\|" : FS)+"+$");
 	var row = "", rr = "", cols = [];
 	var i = 0, cc = 0, val;
 	var R = 0, C = 0;
 	for(C = r.s.c; C <= r.e.c; ++C) cols[C] = encode_col(C);
 	for(R = r.s.r; R <= r.e.r; ++R) {
+		var isempty = true;
 		row = "";
 		rr = encode_row(R);
 		for(C = r.s.c; C <= r.e.c; ++C) {
 			val = sheet[cols[C] + rr];
 			if(val == null) txt = "";
 			else if(val.v != null) {
-				txt = ''+format_cell(val);
+				isempty = false;
+				txt = ''+format_cell(val, null, o);
 				for(i = 0, cc = 0; i !== txt.length; ++i) if((cc = txt.charCodeAt(i)) === fs || cc === rs || cc === 34) {
 					txt = "\"" + txt.replace(qreg, '""') + "\""; break; }
 			} else if(val.f != null && !val.F) {
+				isempty = false;
 				txt = '=' + val.f; if(txt.indexOf(",") >= 0) txt = '"' + txt.replace(qreg, '""') + '"';
 			} else txt = "";
 			<span class="apidocCodeCommentSpan">/* NOTE: Excel CSV does not support array formulae */
 </span>			row += (C === r.s.c ? "" : FS) + txt;
 		}
+		if(o.blankrows === false && isempty) continue;
 		if(o.strip) row = row.replace(endregex,"");
 		out += row + RS;
 	}
@@ -1423,6 +2071,7 @@ function sheet_to_json(sheet, opts){
 	var val, row, range, header = 0, offset = 1, r, hdr = [], isempty, R, C, v, vv;
 	var o = opts != null ? opts : {};
 	var raw = o.raw;
+	var defval = o.defval;
 	if(sheet == null || sheet["!ref"] == null) return [];
 	range = o.range != null ? o.range : sheet["!ref"];
 	if(o.header === 1) header = 1;
@@ -1447,7 +2096,7 @@ function sheet_to_json(sheet, opts){
 			case 3: hdr[C] = o.header[C - r.s.c]; break;
 			default:
 				if(val == null) continue;
-				vv = v = format_cell(val);
+				vv = v = format_cell(val, null, o);
 				var counter = 0;
 				for(var CC = 0; CC < hdr.length; ++CC) if(hdr[CC] == vv) vv = v + "_" + (++counter);
 				hdr[C] = vv;
@@ -1466,20 +2115,30 @@ function sheet_to_json(sheet, opts){
 		}
 		for (C = r.s.c; C <= r.e.c; ++C) {
 			val = sheet[cols[C] + rr];
-			if(val === undefined || val.t === undefined) continue;
+			if(val === undefined || val.t === undefined) {
+				if(defval === undefined) continue;
+				if(hdr[C] != null) { row[hdr[C]] = defval; isempty = false; }
+				continue;
+			}
 			v = val.v;
 			switch(val.t){
-				case 'z': continue;
+				case 'z': if(v == null) break; continue;
 				case 'e': continue;
 				case 's': case 'd': case 'b': case 'n': break;
 				default: throw new Error('unrecognized type ' + val.t);
 			}
-			if(v !== undefined) {
-				row[hdr[C]] = raw ? v : format_cell(val,v);
+			if(hdr[C] != null) {
+				if(v == null) {
+					if(defval !== undefined) row[hdr[C]] = defval;
+					else if(raw && v === null) row[hdr[C]] = null;
+					else continue;
+				} else {
+					row[hdr[C]] = raw ? v : format_cell(val,v,o);
+				}
 				isempty = false;
 			}
 		}
-		if(isempty === false || header === 1) out[outi++] = row;
+		if((isempty === false) || (header === 1 ? o.blankrows !== false : !!o.blankrows)) out[outi++] = row;
 	}
 	out.length = outi;
 	return out;
@@ -1500,27 +2159,31 @@ function sheet_to_csv(sheet, opts) {
 	var r = safe_decode_range(sheet["!ref"]);
 	var FS = o.FS !== undefined ? o.FS : ",", fs = FS.charCodeAt(0);
 	var RS = o.RS !== undefined ? o.RS : "\n", rs = RS.charCodeAt(0);
-	var endregex = new RegExp(FS+"+$");
+	var endregex = new RegExp((FS=="|" ? "\\|" : FS)+"+$");
 	var row = "", rr = "", cols = [];
 	var i = 0, cc = 0, val;
 	var R = 0, C = 0;
 	for(C = r.s.c; C <= r.e.c; ++C) cols[C] = encode_col(C);
 	for(R = r.s.r; R <= r.e.r; ++R) {
+		var isempty = true;
 		row = "";
 		rr = encode_row(R);
 		for(C = r.s.c; C <= r.e.c; ++C) {
 			val = sheet[cols[C] + rr];
 			if(val == null) txt = "";
 			else if(val.v != null) {
-				txt = ''+format_cell(val);
+				isempty = false;
+				txt = ''+format_cell(val, null, o);
 				for(i = 0, cc = 0; i !== txt.length; ++i) if((cc = txt.charCodeAt(i)) === fs || cc === rs || cc === 34) {
 					txt = "\"" + txt.replace(qreg, '""') + "\""; break; }
 			} else if(val.f != null && !val.F) {
+				isempty = false;
 				txt = '=' + val.f; if(txt.indexOf(",") >= 0) txt = '"' + txt.replace(qreg, '""') + '"';
 			} else txt = "";
 			<span class="apidocCodeCommentSpan">/* NOTE: Excel CSV does not support array formulae */
 </span>			row += (C === r.s.c ? "" : FS) + txt;
 		}
+		if(o.blankrows === false && isempty) continue;
 		if(o.strip) row = row.replace(endregex,"");
 		out += row + RS;
 	}
@@ -1530,9 +2193,9 @@ function sheet_to_csv(sheet, opts) {
 - example usage
 ```shell
 ...
-| strip       |  false   | Remove trailing field separators in each record **  |
 
 - 'strip' will remove trailing commas from each line under default 'FS/RS'
+- blankrows must be set to 'false' to skip blank lines.
 
 For the example sheet:
 
@@ -1601,7 +2264,7 @@ accordance with Excel.  For the example sheet:
 [ 'A1=\'S', 'F1=\'J', 'D2=4', 'B3=3', 'G3=8' ]
 '''
 
-### CSV and general DSV Output
+### Delimiter-Separated Output
 
 As an alternative to the 'writeFile' CSV type, 'XLSX.utils.sheet_to_csv' also
 ...
@@ -1614,6 +2277,7 @@ function sheet_to_json(sheet, opts){
 	var val, row, range, header = 0, offset = 1, r, hdr = [], isempty, R, C, v, vv;
 	var o = opts != null ? opts : {};
 	var raw = o.raw;
+	var defval = o.defval;
 	if(sheet == null || sheet["!ref"] == null) return [];
 	range = o.range != null ? o.range : sheet["!ref"];
 	if(o.header === 1) header = 1;
@@ -1638,7 +2302,7 @@ function sheet_to_json(sheet, opts){
 			case 3: hdr[C] = o.header[C - r.s.c]; break;
 			default:
 				if(val == null) continue;
-				vv = v = format_cell(val);
+				vv = v = format_cell(val, null, o);
 				var counter = 0;
 				for(var CC = 0; CC < hdr.length; ++CC) if(hdr[CC] == vv) vv = v + "_" + (++counter);
 				hdr[C] = vv;
@@ -1657,20 +2321,30 @@ function sheet_to_json(sheet, opts){
 		}
 		for (C = r.s.c; C <= r.e.c; ++C) {
 			val = sheet[cols[C] + rr];
-			if(val === undefined || val.t === undefined) continue;
+			if(val === undefined || val.t === undefined) {
+				if(defval === undefined) continue;
+				if(hdr[C] != null) { row[hdr[C]] = defval; isempty = false; }
+				continue;
+			}
 			v = val.v;
 			switch(val.t){
-				case 'z': continue;
+				case 'z': if(v == null) break; continue;
 				case 'e': continue;
 				case 's': case 'd': case 'b': case 'n': break;
 				default: throw new Error('unrecognized type ' + val.t);
 			}
-			if(v !== undefined) {
-				row[hdr[C]] = raw ? v : format_cell(val,v);
+			if(hdr[C] != null) {
+				if(v == null) {
+					if(defval !== undefined) row[hdr[C]] = defval;
+					else if(raw && v === null) row[hdr[C]] = null;
+					else continue;
+				} else {
+					row[hdr[C]] = raw ? v : format_cell(val,v,o);
+				}
 				isempty = false;
 			}
 		}
-		if(isempty === false || header === 1) out[outi++] = row;
+		if((isempty === false) || (header === 1 ? o.blankrows !== false : !!o.blankrows)) out[outi++] = row;
 	}
 	out.length = outi;
 	return out;
@@ -1679,9 +2353,9 @@ function sheet_to_json(sheet, opts){
 - example usage
 ```shell
 ...
-| '"A"'            | Row object keys are literal column labels                 |
-| array of strings | Use specified strings as keys in row objects              |
-| (default)        | Read and disambiguate first row as keys                   |
+
+If header is not '1', the row object will contain the non-enumerable property
+'__rowNum__' that represents the row of the sheet corresponding to the entry.
 
 For the example sheet:
 
@@ -1700,7 +2374,82 @@ For the example sheet:
 #### <a name="apidoc.element.xlsx.utils.sheet_to_row_object_array"></a>[function <span class="apidocSignatureSpan">xlsx.utils.</span>sheet_to_row_object_array (sheet, opts)](#apidoc.element.xlsx.utils.sheet_to_row_object_array)
 - description and source-code
 ```javascript
-function sheet_to_row_object_array(sheet, opts) { return sheet_to_json(sheet, opts != null ? opts : {}); }
+function sheet_to_json(sheet, opts){
+	var val, row, range, header = 0, offset = 1, r, hdr = [], isempty, R, C, v, vv;
+	var o = opts != null ? opts : {};
+	var raw = o.raw;
+	var defval = o.defval;
+	if(sheet == null || sheet["!ref"] == null) return [];
+	range = o.range != null ? o.range : sheet["!ref"];
+	if(o.header === 1) header = 1;
+	else if(o.header === "A") header = 2;
+	else if(Array.isArray(o.header)) header = 3;
+	switch(typeof range) {
+		case 'string': r = safe_decode_range(range); break;
+		case 'number': r = safe_decode_range(sheet["!ref"]); r.s.r = range; break;
+		default: r = range;
+	}
+	if(header > 0) offset = 0;
+	var rr = encode_row(r.s.r);
+	var cols = new Array(r.e.c-r.s.c+1);
+	var out = new Array(r.e.r-r.s.r-offset+1);
+	var outi = 0;
+	for(C = r.s.c; C <= r.e.c; ++C) {
+		cols[C] = encode_col(C);
+		val = sheet[cols[C] + rr];
+		switch(header) {
+			case 1: hdr[C] = C; break;
+			case 2: hdr[C] = cols[C]; break;
+			case 3: hdr[C] = o.header[C - r.s.c]; break;
+			default:
+				if(val == null) continue;
+				vv = v = format_cell(val, null, o);
+				var counter = 0;
+				for(var CC = 0; CC < hdr.length; ++CC) if(hdr[CC] == vv) vv = v + "_" + (++counter);
+				hdr[C] = vv;
+		}
+	}
+
+	for (R = r.s.r + offset; R <= r.e.r; ++R) {
+		rr = encode_row(R);
+		isempty = true;
+		if(header === 1) row = [];
+		else {
+			row = {};
+			if(Object.defineProperty) try { Object.defineProperty(row, '__rowNum__', {value:R, enumerable:false}); } catch(e) { row.__rowNum__
+ = R; }
+			else row.__rowNum__ = R;
+		}
+		for (C = r.s.c; C <= r.e.c; ++C) {
+			val = sheet[cols[C] + rr];
+			if(val === undefined || val.t === undefined) {
+				if(defval === undefined) continue;
+				if(hdr[C] != null) { row[hdr[C]] = defval; isempty = false; }
+				continue;
+			}
+			v = val.v;
+			switch(val.t){
+				case 'z': if(v == null) break; continue;
+				case 'e': continue;
+				case 's': case 'd': case 'b': case 'n': break;
+				default: throw new Error('unrecognized type ' + val.t);
+			}
+			if(hdr[C] != null) {
+				if(v == null) {
+					if(defval !== undefined) row[hdr[C]] = defval;
+					else if(raw && v === null) row[hdr[C]] = null;
+					else continue;
+				} else {
+					row[hdr[C]] = raw ? v : format_cell(val,v,o);
+				}
+				isempty = false;
+			}
+		}
+		if((isempty === false) || (header === 1 ? o.blankrows !== false : !!o.blankrows)) out[outi++] = row;
+	}
+	out.length = outi;
+	return out;
+}
 ```
 - example usage
 ```shell
@@ -1711,6 +2460,71 @@ n/a
 - description and source-code
 ```javascript
 function split_cell(cstr) { return cstr.replace(/(\$?[A-Z]*)(\$?\d*)/,"$1,$2").split(","); }
+```
+- example usage
+```shell
+n/a
+```
+
+#### <a name="apidoc.element.xlsx.utils.table_to_book"></a>[function <span class="apidocSignatureSpan">xlsx.utils.</span>table_to_book (table, opts)](#apidoc.element.xlsx.utils.table_to_book)
+- description and source-code
+```javascript
+function table_to_book(table, opts) {
+	return sheet_to_workbook(parse_dom_table(table, opts), opts);
+}
+```
+- example usage
+```shell
+...
+var workbook = XLSX.readFile('test.xlsx');
+/* DO SOMETHING WITH workbook HERE */
+'''
+
+- Browser DOM Table element:
+
+'''js
+var worksheet = XLSX.utils.table_to_book(document.getElementById('tableau'));
+/* DO SOMETHING WITH workbook HERE */
+'''
+
+- ajax (for a more complete example that works in older browsers, check the demo
+  at <http://oss.sheetjs.com/js-xlsx/ajax.html>):
+
+'''js
+...
+```
+
+#### <a name="apidoc.element.xlsx.utils.table_to_sheet"></a>[function <span class="apidocSignatureSpan">xlsx.utils.</span>table_to_sheet (table, opts)](#apidoc.element.xlsx.utils.table_to_sheet)
+- description and source-code
+```javascript
+function parse_dom_table(table, opts) {
+	var ws = ({});
+	var rows = table.getElementsByTagName('tr');
+	var range = {s:{r:0,c:0},e:{r:rows.length - 1,c:0}};
+	var merges = [], midx = 0;
+	var R = 0, _C = 0, C = 0, RS = 0, CS = 0;
+	for(; R < rows.length; ++R) {
+		var row = rows[R];
+		var elts = row.children;
+		for(_C = C = 0; _C < elts.length; ++_C) {
+			var elt = elts[_C], v = elts[_C].innerText;
+			for(midx = 0; midx < merges.length; ++midx) {
+				var m = merges[midx];
+				if(m.s.c == C && m.s.r <= R && R <= m.e.r) { C = m.e.c+1; midx = -1; }
+			}
+			<span class="apidocCodeCommentSpan">/* TODO: figure out how to extract nonstandard mso- style */
+</span>			CS = +elt.getAttribute("colspan") || 1;
+			if((RS = +elt.getAttribute("rowspan"))>0) merges.push({s:{r:R,c:C},e:{r:R + RS - 1, c:C + CS - 1}});
+			var o = {t:'s', v:v};
+			if(v != null && v.length && !isNaN(Number(v))) o = {t:'n', v:Number(v)};
+			ws[encode_cell({c:C, r:R})] = o;
+			C += CS;
+		}
+	}
+	ws['!merges'] = merges;
+	ws['!ref'] = encode_range(range);
+	return ws;
+}
 ```
 - example usage
 ```shell
